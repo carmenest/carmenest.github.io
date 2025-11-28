@@ -1,171 +1,265 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carmen Esteban – Inteligencia Artificial Aplicada</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #0d0d0d;
-            font-family: "Segoe UI", sans-serif;
-            color: #e6e6e6;
-            line-height: 1.6;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carmen Esteban – Investigación en IA Aplicada</title>
 
-        .container {
-            max-width: 850px;
-            margin: auto;
-            padding: 3rem 1.5rem;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: #0d0d0d;
+        color: #e6e6e6;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+    }
 
-        h1 {
-            font-size: 2.6rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            color: #ffffff;
-            text-align: center;
-        }
+    /* --- NAVBAR --- */
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(20, 20, 20, 0.9);
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #222;
+        z-index: 100;
+        backdrop-filter: blur(6px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        h2 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-top: 2.8rem;
-            color: #4da3ff;
-        }
+    nav a {
+        color: #e6e6e6;
+        margin-right: 1.5rem;
+        text-decoration: none;
+        font-weight: 500;
+    }
 
-        p {
-            font-size: 1.05rem;
-            color: #bbbbbb;
-        }
+    nav a:hover {
+        color: #4da6ff;
+    }
 
-        .section {
-            margin-top: 2.5rem;
-            background: #141414;
-            padding: 1.8rem;
-            border-radius: 12px;
-            border: 1px solid #1f1f1f;
-        }
+    .lang-switch {
+        cursor: pointer;
+        padding: 0.4rem 0.8rem;
+        background: #111;
+        border: 1px solid #444;
+        border-radius: 6px;
+    }
 
-        /* Desplegables */
-        details {
-            margin-top: 1rem;
-            background: #111;
-            padding: 1rem 1.2rem;
-            border-radius: 10px;
-            border: 1px solid #222;
-        }
+    /* --- CONTAINER --- */
+    .container {
+        max-width: 900px;
+        margin: 8rem auto 3rem;
+        padding: 0 1.5rem;
+        animation: fadeIn 1.4s ease;
+    }
 
-        summary {
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            color: #4da3ff;
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        summary:hover {
-            opacity: 0.8;
-        }
+    h1, h2 {
+        color: #ffffff;
+    }
 
-        /* Lista de enlaces profesionales */
-        .links-list {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 1rem;
-        }
+    h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    h2 { margin-top: 2.8rem; margin-bottom: 0.8rem; }
 
-        .links-list li {
-            margin: 0.7rem 0;
-        }
+    .section {
+        background: #111;
+        border: 1px solid #222;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-top: 2rem;
+    }
 
-        .links-list a {
-            color: #4da3ff;
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
+    .project {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        border-left: 3px solid #4da6ff;
+    }
 
-        .links-list a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    a.link {
+        color: #4da6ff;
+        text-decoration: none;
+    }
+    a.link:hover {
+        text-decoration: underline;
+    }
+
+</style>
 </head>
 
 <body>
-    <div class="container">
 
-        <h1>Carmen Esteban</h1>
-        <p style="text-align:center; font-size:1.15rem; color:#cccccc;">
-            Inteligencia Artificial Aplicada · Sistemas Cognitivos · Creatividad Computacional
+<!-- NAVBAR -->
+<nav>
+    <div>
+        <a href="#about" id="nav_about">Sobre mí</a>
+        <a href="#projects" id="nav_projects">Proyectos</a>
+        <a href="#cv" id="nav_cv">CV</a>
+        <a href="#publications" id="nav_publications">Publicaciones</a>
+    </div>
+
+    <div class="lang-switch" onclick="switchLang()">
+        <span id="lang_label">EN</span>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- TITULAR -->
+    <h1 id="title_main">Carmen Esteban</h1>
+    <p id="title_sub">
+        Inteligencia Artificial Aplicada · Sistemas Cognitivos · Creatividad Computacional
+    </p>
+
+    <!-- SOBRE MÍ -->
+    <div class="section" id="about">
+        <h2 id="about_title">Sobre mí</h2>
+        <p id="about_text">
+            Trabajo en la intersección entre <strong>IA aplicada</strong>, 
+            <strong>sistemas cognitivos</strong> y <strong>automatización inteligente</strong>.  
+            Desarrollo motores de razonamiento, modelos neurosimbólicos y sistemas multi-agente 
+            que operan con alta precisión en contextos reales como fiscalidad, derecho y medicina.  
+            Llevo varios años investigando en estructuras cognitivas ligeras, creatividad en IA y 
+            modelos de intencionalidad dinámica.
+        </p>
+    </div>
+
+    <!-- PROYECTOS DESTACADOS -->
+    <div class="section" id="projects">
+        <h2 id="projects_title">Proyectos destacados</h2>
+
+        <div class="project">
+            <strong>NEOSYNT</strong> — Sistema evolutivo con intencionalidad dinámica.  
+            <br><a class="link" href="https://github.com/carmenest/NEOSYNT" target="_blank">Repositorio</a>
+        </div>
+
+        <div class="project">
+            <strong>PNEUMA CORE</strong> — Motor de razonamiento universal sin dependencias.  
+            <br><a class="link" href="https://zenodo.org/records/13736937" target="_blank">Publicación</a>
+        </div>
+
+        <div class="project">
+            <strong>THROMBIA</strong> — Sistema clínico multi-agente para decisiones en trombosis.  
+            <br><a class="link" href="https://zenodo.org/records/13736918" target="_blank">Publicación</a>
+        </div>
+    </div>
+
+    <!-- CV PROFESIONAL -->
+    <div class="section" id="cv">
+        <h2 id="cv_title">CV profesional</h2>
+
+        <h3 id="cv_comp_title">Competencias</h3>
+        <ul id="cv_comp">
+            <li>Diseño de arquitecturas cognitivas ligeras</li>
+            <li>Modelos evolutivos y multi-agente</li>
+            <li>Razonamiento simbólico y neurosimbólico</li>
+            <li>Creatividad computacional y evaluación experimental</li>
+            <li>Automatización basada en IA (legal, fiscal, médica)</li>
+        </ul>
+
+        <h3 id="cv_exp_title">Experiencia</h3>
+        <p id="cv_exp">
+            Más de 5 años desarrollando herramientas de IA aplicadas a procesos reales, 
+            incluyendo motores de razonamiento, asistentes legales, sistemas fiscales inteligentes, 
+            modelos multimodales médicos y frameworks de creatividad en IA.
         </p>
 
-        <!-- SOBRE MÍ -->
-        <div class="section">
-            <h2>Sobre mí</h2>
-            <p>
-                Trabajo en la intersección entre <b>IA aplicada</b>, <b>sistemas cognitivos</b> 
-                y <b>automatización inteligente</b>. Desarrollo motores de razonamiento,
-                modelos neurosimbólicos y sistemas multi-agente que operan con alta precisión en contextos 
-                reales como fiscalidad, derecho y medicina.
-            </p>
-        </div>
-
-        <!-- INVESTIGACIÓN -->
-        <div class="section">
-            <h2>Investigación actual</h2>
-
-            <p>
-                Diseño arquitecturas ligeras de cognición artificial que integran:
-            </p>
-            <ul>
-                <li>intencionalidad dinámica;</li>
-                <li>adaptación contextual;</li>
-                <li>optimización evolutiva bajo alta varianza.</li>
-            </ul>
-
-            <details>
-                <summary>NEOSYNT — Sistema evolutivo con intencionalidad dinámica</summary>
-                <p style="margin-top:1rem;">
-                    NEOSYNT es un marco experimental que investiga cómo un sistema de IA puede mantener 
-                    objetivos, estabilidad y dirección bajo condiciones cambiantes, combinando evolución, 
-                    razonamiento y dinámicas de intención.
-                </p>
-            </details>
-
-            <details>
-                <summary>Creatividad computacional y modelos simbólicos</summary>
-                <p style="margin-top:1rem;">
-                    Estudio mecanismos que permiten a los sistemas generar variación no trivial, 
-                    estructuras nuevas y patrones coherentes sin depender de modelos de gran escala.
-                </p>
-            </details>
-        </div>
-
-        <!-- PERFILES CIENTÍFICOS -->
-        <div class="section">
-            <h2>Perfiles científicos</h2>
-            <p>Puedes encontrar mis trabajos, artículos y actividad investigadora en las siguientes plataformas:</p>
-
-            <ul class="links-list">
-                <li>
-                    <a href="https://www.linkedin.com/in/carmenest-4b495b387" target="_blank">
-                        🟦 LinkedIn — Perfil profesional
-                    </a>
-                </li>
-                <li>
-                    <a href="https://orcid.org/0009-0009-8062-5492" target="_blank">
-                        🟩 ORCID — Identificador de investigadora
-                    </a>
-                </li>
-                <li>
-                    <a href="https://zenodo.org/me/uploads?q=&f=shared_with_me%3Afalse&l=list&p=1&s=10&sort=newest" target="_blank">
-                        🟪 Zenodo — Publicaciones y documentos técnicos
-                    </a>
-                </li>
-            </ul>
-        </div>
-
+        <h3 id="cv_proj_title">Proyectos de IA</h3>
+        <ul id="cv_proj">
+            <li>NEOSYNT – Sistema evolutivo de creatividad con intenciones dinámicas</li>
+            <li>PNEUMA – Razonamiento universal sin dependencias</li>
+            <li>THROMBIA – IA clínica multi-agente</li>
+            <li>ADNIA – Plataforma legal autónoma</li>
+            <li>IAFiscal – Motor fiscal inteligente</li>
+        </ul>
     </div>
+
+    <!-- PUBLICACIONES -->
+    <div class="section" id="publications">
+        <h2 id="pub_title">Publicaciones</h2>
+        <p id="pub_intro">Lista completa disponible en Zenodo:</p>
+
+        <p>
+            <a class="link" href="https://zenodo.org/me/uploads" target="_blank">
+                https://zenodo.org/me/uploads
+            </a>
+        </p>
+    </div>
+
+</div>
+
+<!-- SCRIPT PARA CAMBIO DE IDIOMA -->
+<script>
+let lang = "es";
+
+function switchLang() {
+    lang = (lang === "es") ? "en" : "es";
+    document.getElementById("lang_label").innerText = lang === "es" ? "EN" : "ES";
+
+    const t = {
+        es: {
+            nav_about: "Sobre mí",
+            nav_projects: "Proyectos",
+            nav_cv: "CV",
+            nav_publications: "Publicaciones",
+            title_sub: "Inteligencia Artificial Aplicada · Sistemas Cognitivos · Creatividad Computacional",
+            about_title: "Sobre mí",
+            about_text:
+                "Trabajo en la intersección entre IA aplicada, sistemas cognitivos y automatización inteligente. " +
+                "Desarrollo motores de razonamiento, modelos neurosimbólicos y sistemas multi-agente que operan en fiscalidad, derecho y medicina. " +
+                "Investigo modelos de intencionalidad dinámica y creatividad computacional.",
+
+            projects_title: "Proyectos destacados",
+
+            cv_title: "CV profesional",
+            cv_comp_title: "Competencias",
+            cv_exp_title: "Experiencia",
+            cv_exp: "Más de 5 años desarrollando herramientas de IA aplicadas, motores de razonamiento y arquitecturas cognitivas.",
+
+            cv_proj_title: "Proyectos de IA",
+            pub_title: "Publicaciones",
+            pub_intro: "Lista completa disponible en Zenodo:"
+        },
+
+        en: {
+            nav_about: "About",
+            nav_projects: "Projects",
+            nav_cv: "CV",
+            nav_publications: "Publications",
+            title_sub: "Applied Artificial Intelligence · Cognitive Systems · Computational Creativity",
+            about_title: "About me",
+            about_text:
+                "I work at the intersection of applied AI, cognitive systems, and intelligent automation. " +
+                "I design reasoning engines, neurosymbolic models, and multi-agent systems operating in real domains such as law, taxation and medicine. " +
+                "My research focuses on dynamic intentionality and computational creativity.",
+
+            projects_title: "Highlighted Projects",
+
+            cv_title: "Professional CV",
+            cv_comp_title: "Core Skills",
+            cv_exp_title: "Experience",
+            cv_exp: "Over 5 years building real-world AI systems: reasoning engines, cognitive architectures, legal AI and medical models.",
+
+            cv_proj_title: "AI Projects",
+            pub_title: "Publications",
+            pub_intro: "Complete list available on Zenodo:"
+        }
+    };
+
+    // Actualiza todos los elementos
+    for (let key in t[lang]) {
+        const el = document.getElementById(key);
+        if (el) el.innerHTML = t[lang][key];
+    }
+}
+</script>
+
 </body>
 </html>
