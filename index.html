@@ -3,190 +3,169 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carmen Esteban — IA aplicada & Investigación</title>
-
+    <title>Carmen Esteban – Inteligencia Artificial Aplicada</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             background: #0d0d0d;
             font-family: "Segoe UI", sans-serif;
-            color: #e5e5e5;
+            color: #e6e6e6;
             line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: auto;
-            padding: 4rem 1.5rem;
+            padding: 3rem 1.5rem;
         }
 
         h1 {
-            font-size: 3.3rem;
-            font-weight: 700;
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
             color: #ffffff;
-            margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 500;
-            color: #bbbbbb;
-            margin-top: 0.3rem;
-        }
-
-        .section {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: #141414;
-            border-radius: 14px;
-            border: 1px solid #1f1f1f;
-            transition: 0.35s;
-        }
-
-        .section:hover {
-            border-color: #4da3ff;
-            box-shadow: 0 0 18px rgba(77, 163, 255, 0.15);
-        }
-
-        .title-mini {
-            font-size: 1.3rem;
+            margin-top: 2.8rem;
             color: #4da3ff;
-            margin-bottom: 1rem;
-            font-weight: 600;
         }
 
         p {
-            font-size: 1.06rem;
-            color: #d4d4d4;
+            font-size: 1.05rem;
+            color: #bbbbbb;
         }
 
-        a {
-            color: #4da3ff;
-            text-decoration: none;
-            font-weight: 500;
+        .section {
+            margin-top: 2.5rem;
+            background: #141414;
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid #1f1f1f;
         }
 
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Bloques colapsables */
+        /* Desplegables */
         details {
             margin-top: 1rem;
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 1rem 1.3rem;
-            border: 1px solid #2a2a2a;
-            cursor: pointer;
-        }
-
-        details[open] {
-            border-color: #4da3ff;
+            background: #111;
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            border: 1px solid #222;
         }
 
         summary {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
             color: #4da3ff;
-            font-weight: 600;
         }
 
-        .footer {
-            text-align: center;
-            margin-top: 4rem;
-            margin-bottom: 2rem;
-            color: #666;
-            font-size: 0.9rem;
+        summary:hover {
+            opacity: 0.8;
         }
 
+        /* Lista de enlaces profesionales */
+        .links-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .links-list li {
+            margin: 0.7rem 0;
+        }
+
+        .links-list a {
+            color: #4da3ff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .links-list a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        
-        <!-- HEADER -->
-        <h1>Carmen Esteban</h1>
-        <h2>Inteligencia Artificial Aplicada · Sistemas Cognitivos · Creatividad Computacional</h2>
 
-        <!-- SEC 1 -->
+        <h1>Carmen Esteban</h1>
+        <p style="text-align:center; font-size:1.15rem; color:#cccccc;">
+            Inteligencia Artificial Aplicada · Sistemas Cognitivos · Creatividad Computacional
+        </p>
+
+        <!-- SOBRE MÍ -->
         <div class="section">
-            <div class="title-mini">Sobre mí</div>
+            <h2>Sobre mí</h2>
             <p>
-                Trabajo en la intersección entre <strong>IA aplicada</strong>, 
-                <strong>sistemas cognitivos</strong> y <strong>automatización inteligente</strong>.
-                Desarrollo motores de razonamiento, modelos neurosimbólicos y sistemas multi-agente que
-                operan con alta precisión en contextos reales como fiscalidad, derecho y medicina.
+                Trabajo en la intersección entre <b>IA aplicada</b>, <b>sistemas cognitivos</b> 
+                y <b>automatización inteligente</b>. Desarrollo motores de razonamiento,
+                modelos neurosimbólicos y sistemas multi-agente que operan con alta precisión en contextos 
+                reales como fiscalidad, derecho y medicina.
             </p>
         </div>
 
-        <!-- SEC 2 -->
+        <!-- INVESTIGACIÓN -->
         <div class="section">
-            <div class="title-mini">Investigación actual</div>
+            <h2>Investigación actual</h2>
 
             <p>
                 Diseño arquitecturas ligeras de cognición artificial que integran:
-                <br>• intencionalidad dinámica,  
-                <br>• adaptación contextual,  
-                <br>• y optimización evolutiva bajo alta varianza.
             </p>
+            <ul>
+                <li>intencionalidad dinámica;</li>
+                <li>adaptación contextual;</li>
+                <li>optimización evolutiva bajo alta varianza.</li>
+            </ul>
 
             <details>
                 <summary>NEOSYNT — Sistema evolutivo con intencionalidad dinámica</summary>
                 <p style="margin-top:1rem;">
-                    Proyecto de investigación basado en algoritmos evolutivos multi-objetivo (NSGA-II)
-                    extendidos con módulos de intenciones, meta-intención y autorregulación semántica.
-                    Incluye 7 experimentos sistemáticos y análisis de estabilidad cognitiva.
-                    <br><br>
-                    🔗 Repositorio: 
-                    <a href="https://github.com/carmenest/NEOSYNT" target="_blank">NEOSYNT</a>
+                    NEOSYNT es un marco experimental que investiga cómo un sistema de IA puede mantener 
+                    objetivos, estabilidad y dirección bajo condiciones cambiantes, combinando evolución, 
+                    razonamiento y dinámicas de intención.
                 </p>
             </details>
 
             <details>
                 <summary>Creatividad computacional y modelos simbólicos</summary>
                 <p style="margin-top:1rem;">
-                    Desarrollo métodos híbridos (evolutivos + simbólicos) para estudiar creatividad emergente
-                    en sistemas no lineales. Trabajo con arquitectura propia de “intención contextual”.
+                    Estudio mecanismos que permiten a los sistemas generar variación no trivial, 
+                    estructuras nuevas y patrones coherentes sin depender de modelos de gran escala.
                 </p>
             </details>
         </div>
 
-        <!-- SEC 3 -->
+        <!-- PERFILES CIENTÍFICOS -->
         <div class="section">
-            <div class="title-mini">Trabajo profesional</div>
+            <h2>Perfiles científicos</h2>
+            <p>Puedes encontrar mis trabajos, artículos y actividad investigadora en las siguientes plataformas:</p>
 
-            <p>
-                He desarrollado múltiples sistemas IA aplicados, incluyendo plataformas legales, fiscalidad
-                inteligente, análisis de riesgos y herramientas predictivas.
-            </p>
-
-            <details>
-                <summary>Áreas en las que trabajo</summary>
-                <p style="margin-top:1rem;">
-                    • IA aplicada a procesos empresariales  
-                    • Motores de razonamiento inteligente  
-                    • Sistemas de decisión multi-agente  
-                    • Análisis estructural y detección de patrones  
-                    • Automatización fiscal & legal  
-                </p>
-            </details>
+            <ul class="links-list">
+                <li>
+                    <a href="https://www.linkedin.com/in/carmenest-4b495b387" target="_blank">
+                        🟦 LinkedIn — Perfil profesional
+                    </a>
+                </li>
+                <li>
+                    <a href="https://orcid.org/0009-0009-8062-5492" target="_blank">
+                        🟩 ORCID — Identificador de investigadora
+                    </a>
+                </li>
+                <li>
+                    <a href="https://zenodo.org/me/uploads?q=&f=shared_with_me%3Afalse&l=list&p=1&s=10&sort=newest" target="_blank">
+                        🟪 Zenodo — Publicaciones y documentos técnicos
+                    </a>
+                </li>
+            </ul>
         </div>
 
-        <!-- SEC 4 -->
-        <div class="section">
-            <div class="title-mini">Contacto</div>
-
-            <p>
-                • GitHub: <a target="_blank" href="https://github.com/carmenest">carmenest</a> <br>
-                • Email profesional: <a href="mailto:carmen.esteban@assemglobal.com">carmen.esteban@assemglobal.com</a>
-            </p>
-        </div>
-
-        <div class="footer">
-            © 2025 · Carmen Esteban — Investigación & IA Aplicada
-        </div>
     </div>
 </body>
 </html>
