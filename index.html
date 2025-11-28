@@ -1,350 +1,355 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carmen Esteban — Cognitive Architect</title>
-<style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carmen Esteban — AI Systems & Cognitive Architectures</title>
 
-/* ------------------------- */
-/* VARIABLES Y BASE */
-/* ------------------------- */
-:root {
-  --bg: #0b0b0f;
-  --card: #14141b;
-  --accent: #e0b869;
-  --text: #e6e6e6;
-  --text-soft: #a5a5a5;
-  --radius: 14px;
-  --transition: 0.25s ease;
-}
+    <!-- FAVICON CE -->
+    <link rel="icon" href="data:image/svg+xml,
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+      <circle cx='50' cy='50' r='48' fill='%23ffcc66'/>
+      <text x='50' y='63' font-size='42' font-family='Segoe UI' font-weight='700' text-anchor='middle' fill='black'>CE</text>
+    </svg>">
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
+    <style>
+        /* ---------------- GENERAL STYLES ---------------- */
+        body {
+            margin: 0;
+            background: #0d0d0f;
+            color: #e6e6e6;
+            font-family: "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
 
-/* ------------------------- */
-/* MENÚ SUPERIOR */
-/* ------------------------- */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(10,10,15,0.6);
-  backdrop-filter: blur(8px);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 50;
-}
+        a { color: #ffd27f; text-decoration: none; }
+        a:hover { color: #ffebbb; }
 
-nav .name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--accent);
-}
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding-top: 7rem;
+        }
 
-nav ul {
-  display: flex;
-  gap: 1.8rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+        /* ---------------- NAVBAR ---------------- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 18, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
+        }
 
-nav ul li {
-  cursor: pointer;
-  transition: var(--transition);
-}
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-nav ul li:hover {
-  color: var(--accent);
-}
+        .logo {
+            background: #ffcc66;
+            color: black;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-weight: bold;
+        }
 
-.lang-switch {
-  background: #1b1b22;
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: var(--transition);
-}
-.lang-switch:hover {
-  background: var(--accent);
-  color: #000;
-}
+        .menu a {
+            margin: 0 1rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+        .menu a:hover { opacity: 1; }
 
-/* ------------------------- */
-/* LAYOUT */
-/* ------------------------- */
-.container {
-  max-width: 900px;
-  margin: 8rem auto 4rem auto;
-  padding: 0 2rem;
-}
+        .lang-switch {
+            display: flex;
+            gap: 0.3rem;
+        }
 
-.card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border: 1px solid #222;
-}
+        .lang-btn {
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            border: 1px solid #555;
+            cursor: pointer;
+            background: #222;
+            font-size: 0.8rem;
+        }
+        .lang-btn.active {
+            background: #ffcc66;
+            color: black;
+            border-color: #ffcc66;
+        }
 
-/* ------------------------- */
-/* FOTO Y PRESENTACIÓN */
-/* ------------------------- */
-.profile {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
+        /* ---------------- TITLE CARD ---------------- */
+        .title-card {
+            display: flex;
+            justify-content: space-between;
+            background: #141418;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0px 0px 20px rgba(255,255,255,0.04);
+            animation: fadeUp 1s ease;
+        }
 
-.profile img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-}
+        .title-text h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
 
-/* ------------------------- */
-/* LINKS Y BOTONES */
-/* ------------------------- */
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+        .tag {
+            background: #2a2a30;
+            padding: 0.4rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
 
-.btn {
-  display: inline-block;
-  margin-top: 1rem;
-  background: var(--accent);
-  color: #000;
-  padding: 0.7rem 1.2rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  transition: var(--transition);
-}
-.btn:hover {
-  background: #fff;
-}
+        .title-buttons {
+            margin-top: 1.5rem;
+        }
 
-/* ------------------------- */
-/* TITULOS */
-/* ------------------------- */
-h1, h2, h3 {
-  margin-top: 0;
-}
+        .btn {
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            border: none;
+            font-weight: 500;
+        }
 
-/* ------------------------- */
-/* TEXTO PEQUEÑO */
-.small {
-  color: var(--text-soft);
-}
+        .btn-primary {
+            background: #ffcc66;
+            color: black;
+        }
 
-/* ------------------------- */
-/* ANIMACIONES SUAVES */
-.fade {
-  animation: fadeIn 1.2s ease forwards;
-  opacity: 0;
-}
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
+        .btn-dark {
+            background: #2a2a30;
+            color: #eee;
+        }
 
-</style>
+        .profile-pic {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffd27f;
+            box-shadow: 0px 0px 30px rgba(255, 213, 100, 0.25);
+        }
+
+        /* ---------------- SECTIONS ---------------- */
+        section {
+            background: #141418;
+            padding: 2rem 2.5rem;
+            border-radius: 18px;
+            margin-bottom: 2.5rem;
+            animation: fadeUp 1s ease;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            color: #ffcc66;
+            font-size: 1.6rem;
+        }
+
+        .chip {
+            background: #222227;
+            padding: 0.35rem 0.9rem;
+            border-radius: 10px;
+            margin: 0.2rem;
+            display: inline-block;
+            font-size: 0.8rem;
+        }
+
+        /* ---------------- KEYFRAMES ---------------- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
 </head>
 
 <body>
 
 <!-- ---------------- NAV ---------------- -->
 <nav>
-  <div class="name">Carmen Esteban</div>
-  <ul>
-    <li onclick="scrollToId('sobre')">Sobre mí</li>
-    <li onclick="scrollToId('investigacion')">Investigación</li>
-    <li onclick="scrollToId('proyectos')">Proyectos</li>
-    <li onclick="scrollToId('publics')">Publicaciones</li>
-    <li onclick="scrollToId('contact')">Contacto</li>
-  </ul>
-  <div class="lang-switch" onclick="toggleLang()">ES / EN</div>
+    <div class="nav-left">
+        <div class="logo">CE</div>
+        <div class="menu">
+            <a href="#sobre" data-es="Sobre mí" data-en="About">Sobre mí</a>
+            <a href="#investigacion" data-es="Investigación" data-en="Research">Investigación</a>
+            <a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a>
+            <a href="#cv" data-es="CV" data-en="CV">CV</a>
+            <a href="#publicaciones" data-es="Publicaciones" data-en="Publications">Publicaciones</a>
+            <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+        </div>
+    </div>
+
+    <div class="lang-switch">
+        <button class="lang-btn active" onclick="setLang('es')" id="btn-es">ES</button>
+        <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+    </div>
 </nav>
 
 <div class="container">
 
-<!-- ---------------- PRESENTACIÓN ---------------- -->
-<div class="card fade" id="sobre">
-  <div class="profile">
-    <img src="carmen.jpg" alt="Carmen Esteban">
-    <div>
-      <h1>Cognitive Architect · Researcher in Intentional AI Systems</h1>
-      <p id="intro">
-        Trabajo en arquitecturas cognitivas ligeras basadas en intencionalidad dinámica,
-        meta-intención y adaptación contextual. Diseño motores de razonamiento que operan con
-        precisión en dominios complejos como fiscalidad, derecho, medicina y creatividad computacional.
-      </p>
+    <!-- ---------------- TITLE ---------------- -->
+    <div class="title-card">
+        <div class="title-text">
+            <span class="tag" data-es="IA aplicada · Sistemas cognitivos ligeros"
+                        data-en="Applied AI · Lightweight Cognitive Systems"></span>
+
+            <h1 data-es="Carmen Esteban" data-en="Carmen Esteban"></h1>
+
+            <p data-es="Diseño motores de razonamiento y sistemas cognitivos ligeros que funcionan en contextos reales: fiscalidad, derecho, medicina y creatividad computacional."
+               data-en="I design reasoning engines and lightweight cognitive systems that operate reliably in real-world domains: taxation, law, medicine and computational creativity.">
+            </p>
+
+            <div class="title-buttons">
+                <button class="btn btn-primary" onclick="location.href='#proyectos'"
+                        data-es="Ver proyectos destacados" data-en="See featured projects">
+                </button>
+
+                <button class="btn btn-dark" onclick="location.href='#cv'"
+                        data-es="CV profesional (ES / EN)" data-en="Professional CV (ES / EN)">
+                </button>
+            </div>
+        </div>
+
+        <img src="carmen.jpg" class="profile-pic" alt="Carmen Esteban">
     </div>
-  </div>
+
+    <!-- ---------------- INVESTIGACIÓN ---------------- -->
+    <section id="investigacion">
+        <h2 data-es="Investigación actual" data-en="Current Research"></h2>
+
+        <p data-es="Trabajo en arquitecturas ligeras de cognición artificial basadas en intencionalidad dinámica, meta-intención y adaptación contextual bajo alta varianza."
+           data-en="I work on lightweight artificial cognition architectures based on dynamic intentionality, meta-intention and context-sensitive adaptation under high variance.">
+        </p>
+
+        <h3 data-es="Líneas principales" data-en="Main research lines"></h3>
+
+        <div class="chip" data-es="Sistemas evolutivos con intencionalidad"
+                         data-en="Intentional evolutionary systems"></div>
+        <div class="chip" data-es="Motores de razonamiento trazables"
+                         data-en="Traceable reasoning engines"></div>
+        <div class="chip" data-es="IA explicable en medicina y derecho"
+                         data-en="Explainable AI for law and medicine"></div>
+        <div class="chip" data-es="Creatividad computacional"
+                         data-en="Computational creativity"></div>
+        <div class="chip" data-es="Modelos simbólicos ligeros"
+                         data-en="Lightweight symbolic models"></div>
+    </section>
+
+    <!-- ---------------- PROYECTOS ---------------- -->
+    <section id="proyectos">
+        <h2 data-es="Proyectos destacados" data-en="Featured Projects"></h2>
+
+        <ul>
+            <li><strong>NEOSYNT</strong> — Sistema evolutivo con intencionalidad dinámica.</li>
+            <li><strong>ThrombIA</strong> — Sistema clínico trazable para trombosis.</li>
+            <li><strong>PNEUMA CORE</strong> — Motor universal explicable de razonamiento.</li>
+        </ul>
+    </section>
+
+    <!-- ---------------- CV PROFESIONAL ---------------- -->
+    <section id="cv">
+        <h2 data-es="CV Profesional" data-en="Professional CV"></h2>
+
+        <p data-es="Investigadora independiente en IA aplicada, diseño de motores cognitivos y sistemas explicables. Experiencia extensa en fiscalidad, derecho, medicina y automatización inteligente."
+           data-en="Independent researcher in applied AI, cognitive engine design and explainable systems. Extensive background in taxation, law, medicine and intelligent automation.">
+        </p>
+
+        <h3 data-es="Competencias clave" data-en="Key skills"></h3>
+
+        <ul>
+            <li data-es="Diseño de motores de razonamiento trazables y explicables."
+                data-en="Design of traceable and explainable reasoning engines."></li>
+
+            <li data-es="Arquitecturas ligeras con intencionalidad dinámica y meta-intención."
+                data-en="Lightweight architectures with dynamic intentionality and meta-intention."></li>
+
+            <li data-es="IA aplicada a contextos reales: fiscalidad, medicina, derecho."
+                data-en="Applied AI in real-world domains: taxation, medicine, law."></li>
+
+            <li data-es="Diseño de sistemas cognitivos robustos a la variabilidad."
+                data-en="Design of cognitive systems robust to variability."></li>
+        </ul>
+
+        <h3 data-es="Experiencia relevante" data-en="Relevant experience"></h3>
+
+        <ul>
+            <li data-es="Diseño y desarrollo de sistemas de IA aplicados para fiscalidad, legal tech, medicina y razonamiento explicable."
+                data-en="Design and development of applied AI systems for taxation, legal tech, medicine and explainable reasoning."></li>
+
+            <li data-es="Creación de arquitecturas cognitivas ligeras y modelos neurosimbólicos aplicados a casos reales."
+                data-en="Creation of lightweight cognitive architectures and neurosymbolic models applied to real cases."></li>
+
+            <li data-es="Dirección técnica en automatización estratégica y optimización de procesos complejos."
+                data-en="Technical leadership in strategic automation and optimization of complex processes."></li>
+        </ul>
+    </section>
+
+    <!-- ---------------- PUBLICACIONES ---------------- -->
+    <section id="publicaciones">
+        <h2 data-es="Publicaciones" data-en="Publications"></h2>
+
+        <p><strong>ORCID:</strong>  
+            <a href="https://orcid.org/0009-0009-8062-5492" target="_blank">
+                https://orcid.org/0009-0009-8062-5492
+            </a>
+        </p>
+
+        <p><strong>Zenodo:</strong>  
+            <a href="https://zenodo.org/me/uploads" target="_blank">
+                Zenodo – Publicaciones
+            </a>
+        </p>
+    </section>
+
+    <!-- ---------------- CONTACTO ---------------- -->
+    <section id="contacto">
+        <h2 data-es="Contacto profesional" data-en="Professional Contact"></h2>
+
+        <p data-es="Colaboro en proyectos de IA aplicada, sistemas cognitivos y creatividad computacional. Si trabajas en arquitecturas ligeras, razonamiento trazable o IA explicable, podemos hablar."
+           data-en="I collaborate on applied AI projects, cognitive systems and computational creativity. If you work on lightweight architectures, traceable reasoning or explainable AI, feel free to reach out.">
+        </p>
+
+        <p>
+            <strong>GitHub:</strong>  
+            <a href="https://github.com/carmenest" target="_blank">github.com/carmenest</a>
+            <br>
+            <strong>LinkedIn:</strong>  
+            <a href="https://www.linkedin.com/in/carmenest-4b495b387" target="_blank">
+                linkedin.com/in/carmenest-4b495b387
+            </a>
+            <br>
+            <strong>NEOSYNT:</strong>  
+            <a href="https://github.com/carmenest/NEOSYNT" target="_blank">NEOSYNT Repository</a>
+        </p>
+    </section>
+
 </div>
 
-<!-- ---------------- INVESTIGACIÓN ---------------- -->
-<div class="card fade" id="investigacion">
-  <h2>Investigación actual</h2>
-  <p id="inv">
-    Exploro modelos de cognición artificial que integran señales de intención,
-    autoconservación del sistema, adaptación a entornos de alta varianza y creatividad computacional.
-    Mi enfoque se centra en mecanismos no lineales donde la agencia emerge de forma estructurada.
-  </p>
-
-  <h3>Líneas principales</h3>
-  <ul>
-    <li id="l1">Modelos evolutivos con intencionalidad dinámica</li>
-    <li id="l2">Meta-intención y sistemas auto-regulados</li>
-    <li id="l3">Cognición ligera para entornos reales</li>
-    <li id="l4">Creatividad computacional y patrones simbólicos</li>
-  </ul>
-</div>
-
-<!-- ---------------- PROYECTOS ---------------- -->
-<div class="card fade" id="proyectos">
-  <h2>Proyectos destacados</h2>
-
-  <h3>NEOSYNT</h3>
-  <p id="ne">
-    Sistema evolutivo con intencionalidad dinámica.  
-    NEOSYNT incorpora señales internas (I_S, I_N, I_C), meta-intención,
-    adaptación contextual y divergencia acumulativa bajo alta varianza.
-  </p>
-
-  <h3>ThrombIA</h3>
-  <p id="th">
-    Sistema clínico de apoyo a decisiones para trombosis basado en IA explicable.
-    Publicado en Zenodo y presentado como sistema multi-agente capaz de producir
-    recomendaciones trazables.
-  </p>
-
-  <h3>PNEUMA CORE</h3>
-  <p id="pn">
-    Motor de razonamiento universal explicable basado en inferencia multicapas,
-    reglas simbólicas y resonancia conceptual.
-  </p>
-</div>
-
-<!-- ---------------- PUBLICACIONES ---------------- -->
-<div class="card fade" id="publics">
-  <h2>Publicaciones y perfil científico</h2>
-
-  <p><strong>ORCID:</strong>  
-    <a href="https://orcid.org/0009-0009-8062-5492" target="_blank">
-      0009-0009-8062-5492
-    </a>
-  </p>
-
-  <p><strong>Zenodo:</strong>  
-    <a href="https://zenodo.org/me/uploads?q=&f=shared_with_me%3Afalse&l=list&p=1&s=10&sort=newest" target="_blank">
-      Mis publicaciones en Zenodo
-    </a>
-  </p>
-
-  <p id="pubtxt">
-    Trabajo como investigadora independiente en IA aplicada.  
-    Uso Zenodo y ORCID como base de referencia científica verificable.
-  </p>
-</div>
-
-<!-- ---------------- CONTACTO ---------------- -->
-<div class="card fade" id="contact">
-  <h2>Contacto profesional</h2>
-
-  <p id="txtcontact">
-    Me interesa colaborar en investigación aplicada con impacto real.
-    Mis líneas principales encajan con arquitecturas ligeras, cognición artificial,
-    creatividad computacional y nuevos enfoques de intencionalidad en IA.
-  </p>
-
-  <p><strong>LinkedIn:</strong>  
-    <a href="https://www.linkedin.com/in/carmenest-4b495b387" target="_blank">Perfil profesional</a>
-  </p>
-
-  <p><strong>GitHub:</strong>  
-    <a href="https://github.com/carmenest" target="_blank">github.com/carmenest</a>
-  </p>
-
-  <p id="openaimsg"><strong>Por qué podría interesarme OpenAI</strong><br>
-    Diseño arquitectura conceptual y experimental desde cero.  
-    Busco siempre estructuras nuevas, no soluciones repetidas.  
-    Mi enfoque mezcla intención, dinámica, interpretabilidad y exploración.  
-    Me gusta construir sistemas que piensan diferente.
-  </p>
-</div>
-
-</div>
-
-<!-- ---------------- SCRIPT DE IDIOMA ---------------- -->
 <script>
-let lang = "ES";
+/* ---------------- LANGUAGE SWITCH ---------------- */
+function setLang(lang) {
+    document.querySelectorAll("[data-es]").forEach(el => {
+        el.innerHTML = lang === "es" ? el.dataset.es : el.dataset.en;
+    });
 
-function toggleLang() {
-  lang = lang === "ES" ? "EN" : "ES";
-
-  const ES = {
-    intro: "Trabajo en arquitecturas cognitivas ligeras basadas en intencionalidad dinámica...",
-    inv: "Exploro modelos de cognición artificial...",
-    l1: "Modelos evolutivos con intencionalidad dinámica",
-    l2: "Meta-intención y sistemas auto-regulados",
-    l3: "Cognición ligera para entornos reales",
-    l4: "Creatividad computacional y patrones simbólicos",
-    ne: "Sistema evolutivo con intencionalidad dinámica...",
-    th: "Sistema clínico de apoyo a decisiones para trombosis...",
-    pn: "Motor de razonamiento universal explicable...",
-    pubtxt: "Trabajo como investigadora independiente...",
-    txtcontact: "Me interesa colaborar en investigación aplicada...",
-    openai: "Diseño arquitectura conceptual desde cero..."
-  };
-
-  const EN = {
-    intro: "I work on lightweight cognitive architectures based on dynamic intentionality...",
-    inv: "I explore artificial cognition models...",
-    l1: "Evolutionary models with dynamic intentionality",
-    l2: "Meta-intention and self-regulated systems",
-    l3: "Lightweight cognition for real environments",
-    l4: "Computational creativity and symbolic patterns",
-    ne: "Evolutionary system with dynamic intentionality...",
-    th: "Clinical decision support system for thrombosis...",
-    pn: "Universal explainable reasoning engine...",
-    pubtxt: "I work as an independent researcher...",
-    txtcontact: "I am interested in applied research collaborations...",
-    openai: "I design conceptual architecture from scratch..."
-  };
-
-  const dict = lang === "ES" ? ES : EN;
-
-  document.getElementById("intro").innerHTML = dict.intro;
-  document.getElementById("inv").innerHTML   = dict.inv;
-  document.getElementById("l1").innerHTML    = dict.l1;
-  document.getElementById("l2").innerHTML    = dict.l2;
-  document.getElementById("l3").innerHTML    = dict.l3;
-  document.getElementById("l4").innerHTML    = dict.l4;
-  document.getElementById("ne").innerHTML    = dict.ne;
-  document.getElementById("th").innerHTML    = dict.th;
-  document.getElementById("pn").innerHTML    = dict.pn;
-  document.getElementById("pubtxt").innerHTML = dict.pubtxt;
-  document.getElementById("txtcontact").innerHTML = dict.txtcontact;
-  document.getElementById("openaimsg").innerHTML = "<strong>" +
-    (lang === "ES" ? "Por qué podría interesarme OpenAI" : "Why OpenAI might interest me") +
-    "</strong><br>" + dict.openai;
-}
-
-function scrollToId(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    document.getElementById("btn-es").classList.toggle("active", lang === "es");
+    document.getElementById("btn-en").classList.toggle("active", lang === "en");
 }
 </script>
 
