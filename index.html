@@ -1,265 +1,1076 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carmen Esteban – Investigación en IA Aplicada</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carmen Esteban — IA Aplicada & Sistemas Cognitivos</title>
 
-<style>
+  <!-- Favicon con iniciales CE -->
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' ry='14' fill='%23091016'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-size='30' fill='%23f5f5f5' font-family='system-ui, -apple-system, BlinkMacSystemFont, sans-serif'%3ECE%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    :root {
+      --bg: #050609;
+      --bg-alt: #0b1018;
+      --bg-card: rgba(15, 20, 32, 0.9);
+      --accent: #f3b15f;
+      --accent-soft: rgba(243, 177, 95, 0.18);
+      --accent-strong: #ffcf7a;
+      --text-main: #f5f5f7;
+      --text-muted: #a9b0c0;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.7);
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --transition-fast: 160ms ease-out;
+      --transition-med: 220ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-        margin: 0;
-        font-family: "Segoe UI", sans-serif;
-        background: #0d0d0d;
-        color: #e6e6e6;
-        line-height: 1.6;
-        scroll-behavior: smooth;
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #1a1c29 0, #050609 55%, #020309 100%);
+      color: var(--text-main);
+      line-height: 1.6;
     }
 
-    /* --- NAVBAR --- */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(20, 20, 20, 0.9);
-        padding: 1rem 2rem;
-        border-bottom: 1px solid #222;
-        z-index: 100;
-        backdrop-filter: blur(6px);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    /* ---------- NAV ---------- */
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      pointer-events: none;
     }
 
-    nav a {
-        color: #e6e6e6;
-        margin-right: 1.5rem;
-        text-decoration: none;
-        font-weight: 500;
+    .nav-inner {
+      pointer-events: auto;
+      width: min(1100px, 100% - 32px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      backdrop-filter: blur(18px);
+      background: linear-gradient(120deg, rgba(5, 6, 12, 0.95), rgba(9, 12, 20, 0.94));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      transform: translateY(10px);
+      opacity: 0;
+      animation: nav-in 520ms var(--transition-med) forwards;
     }
 
-    nav a:hover {
-        color: #4da6ff;
+    @keyframes nav-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .lang-switch {
-        cursor: pointer;
-        padding: 0.4rem 0.8rem;
-        background: #111;
-        border: 1px solid #444;
-        border-radius: 6px;
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    /* --- CONTAINER --- */
-    .container {
-        max-width: 900px;
-        margin: 8rem auto 3rem;
-        padding: 0 1.5rem;
-        animation: fadeIn 1.4s ease;
+    .nav-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 40% 60% 45% 55%;
+      background: radial-gradient(circle at 20% 20%, var(--accent-strong) 0, var(--accent) 32%, #302317 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      color: #050609;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 0 22px rgba(243, 177, 95, 0.5);
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+    .nav-title {
+      display: flex;
+      flex-direction: column;
     }
 
-    h1, h2 {
-        color: #ffffff;
+    .nav-title span:first-child {
+      font-size: 0.9rem;
+      font-weight: 600;
     }
 
-    h1 { font-size: 3rem; margin-bottom: 0.5rem; }
-    h2 { margin-top: 2.8rem; margin-bottom: 0.8rem; }
-
-    .section {
-        background: #111;
-        border: 1px solid #222;
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin-top: 2rem;
+    .nav-title span:last-child {
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
 
-    .project {
-        margin-bottom: 1rem;
-        padding-left: 1rem;
-        border-left: 3px solid #4da6ff;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.9rem;
     }
 
-    a.link {
-        color: #4da6ff;
-        text-decoration: none;
-    }
-    a.link:hover {
-        text-decoration: underline;
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
     }
 
-</style>
+    .nav-links a:hover {
+      color: var(--accent-strong);
+      background: rgba(243, 177, 95, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      font-size: 0.78rem;
+    }
+
+    .lang-btn {
+      border: none;
+      padding: 4px 9px;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .lang-btn.active {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    /* ---------- LAYOUT ---------- */
+
+    .page {
+      width: min(1100px, 100% - 32px);
+      margin: 0 auto;
+      padding-top: 96px;
+      padding-bottom: 64px;
+    }
+
+    section {
+      margin-bottom: 40px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, rgba(10, 12, 18, 0.92), rgba(6, 6, 12, 0.96));
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: section-in 520ms var(--transition-med) forwards;
+    }
+
+    section:nth-of-type(2) { animation-delay: 80ms; }
+    section:nth-of-type(3) { animation-delay: 140ms; }
+    section:nth-of-type(4) { animation-delay: 200ms; }
+    section:nth-of-type(5) { animation-delay: 260ms; }
+    section:nth-of-type(6) { animation-delay: 320ms; }
+
+    @keyframes section-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-inner {
+      padding: 24px 24px 26px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-strong);
+    }
+
+    .section-sub {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 20px;
+      align-items: center;
+      background: radial-gradient(circle at top left, rgba(243, 177, 95, 0.16) 0, rgba(6, 5, 5, 0.98) 45%, #040509 100%);
+    }
+
+    .hero-main h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.2rem, 3vw, 2.8rem);
+      letter-spacing: 0.05em;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(243, 177, 95, 0.1);
+      color: var(--accent-strong);
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-meta span {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 9px 16px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: background var(--transition-med), color var(--transition-med),
+                  border-color var(--transition-med), transform var(--transition-fast),
+                  box-shadow var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #2b1a06;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(243, 177, 95, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(243, 177, 95, 0.55);
+    }
+
+    .btn-ghost {
+      border-color: rgba(255, 255, 255, 0.18);
+      color: var(--text-main);
+      background: rgba(6, 7, 10, 0.8);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(245, 245, 245, 0.06);
+      transform: translateY(-1px);
+    }
+
+    .hero-photo-wrap {
+      justify-self: center;
+      padding: 4px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 10%, var(--accent-strong), rgba(243, 177, 95, 0.08), #050609 70%);
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero-photo {
+      width: clamp(180px, 36vw, 230px);
+      height: clamp(180px, 36vw, 230px);
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.24);
+      position: relative;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: 10px;
+      border-radius: 50%;
+      border: 1px dashed rgba(243, 177, 95, 0.5);
+      animation: orbit 14s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes orbit {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ---------- CONTENT ---------- */
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 20px;
+    }
+
+    .text-muted {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      padding: 14px 14px 16px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left, rgba(243, 177, 95, 0.12), rgba(10, 12, 18, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.9rem;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+      border-color: rgba(243, 177, 95, 0.65);
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-strong);
+    }
+
+    .project-title {
+      font-weight: 600;
+    }
+
+    .project-links {
+      margin-top: 4px;
+      font-size: 0.8rem;
+    }
+
+    .project-links a {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* CV block (ES / EN toggles) */
+
+    .cv-lang-switch {
+      display: inline-flex;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      overflow: hidden;
+    }
+
+    .cv-btn {
+      border: none;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast);
+    }
+
+    .cv-btn.active {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    .cv-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .cv-section-title {
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .cv-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cv-list li {
+      margin-bottom: 8px;
+    }
+
+    .cv-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    /* Contact & footer */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.2fr);
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .link-list a {
+      color: var(--accent-strong);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .link-list a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-photo-wrap {
+        order: -1;
+        margin: 10px auto 0;
+      }
+      .two-col,
+      .cv-grid,
+      .project-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .project-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-inner {
+        padding-inline: 14px;
+      }
+      .nav-links {
+        gap: 8px;
+        font-size: 0.8rem;
+      }
+      .nav-title span:last-child {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- NAVBAR -->
-<nav>
-    <div>
-        <a href="#about" id="nav_about">Sobre mí</a>
-        <a href="#projects" id="nav_projects">Proyectos</a>
-        <a href="#cv" id="nav_cv">CV</a>
-        <a href="#publications" id="nav_publications">Publicaciones</a>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-logo">CE</div>
+        <div class="nav-title">
+          <span>Carmen Esteban</span>
+          <span>AI Systems · Cognitive Architectures</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">Sobre mí</a>
+        <a href="#research">Investigación</a>
+        <a href="#projects">Proyectos</a>
+        <a href="#cv">CV</a>
+        <a href="#publications">Publicaciones</a>
+        <a href="#contact">Contacto</a>
+        <div class="lang-toggle">
+          <button class="lang-btn active" data-lang="es">ES</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </nav>
     </div>
+  </header>
 
-    <div class="lang-switch" onclick="switchLang()">
-        <span id="lang_label">EN</span>
-    </div>
-</nav>
-
-<div class="container">
-
-    <!-- TITULAR -->
-    <h1 id="title_main">Carmen Esteban</h1>
-    <p id="title_sub">
-        Inteligencia Artificial Aplicada · Sistemas Cognitivos · Creatividad Computacional
-    </p>
-
-    <!-- SOBRE MÍ -->
-    <div class="section" id="about">
-        <h2 id="about_title">Sobre mí</h2>
-        <p id="about_text">
-            Trabajo en la intersección entre <strong>IA aplicada</strong>, 
-            <strong>sistemas cognitivos</strong> y <strong>automatización inteligente</strong>.  
-            Desarrollo motores de razonamiento, modelos neurosimbólicos y sistemas multi-agente 
-            que operan con alta precisión en contextos reales como fiscalidad, derecho y medicina.  
-            Llevo varios años investigando en estructuras cognitivas ligeras, creatividad en IA y 
-            modelos de intencionalidad dinámica.
+  <main class="page">
+    <!-- HERO -->
+    <section id="about" class="hero">
+      <div class="section-inner hero-main">
+        <div class="hero-highlight">
+          <span>IA aplicada · Sistemas cognitivos ligeros</span>
+        </div>
+        <h1>Carmen Esteban</h1>
+        <p class="hero-tagline" data-i18n-es="Diseño motores de razonamiento y sistemas cognitivos ligeros que funcionan en contextos reales: fiscalidad, derecho, medicina y creatividad computacional."
+           data-i18n-en="I design lightweight reasoning engines and cognitive systems that work in real contexts: taxation, law, medicine and computational creativity.">
+          Diseño motores de razonamiento y sistemas cognitivos ligeros que funcionan en contextos reales: fiscalidad, derecho, medicina y creatividad computacional.
         </p>
-    </div>
+
+        <div class="hero-meta">
+          <span data-i18n-es="30+ años en fiscalidad y empresa"
+                data-i18n-en="30+ years in tax and business">
+            30+ años en fiscalidad y empresa
+          </span>
+          <span data-i18n-es="5+ años en IA aplicada"
+                data-i18n-en="5+ years in applied AI">
+            5+ años en IA aplicada
+          </span>
+          <span data-i18n-es="Motores de razonamiento, sistemas multi-agente, IA explicable"
+                data-i18n-en="Reasoning engines, multi-agent systems, explainable AI">
+            Motores de razonamiento, sistemas multi-agente, IA explicable
+          </span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <span data-i18n-es="Ver proyectos destacados"
+                  data-i18n-en="View highlighted projects">
+              Ver proyectos destacados
+            </span>
+          </a>
+          <a href="#cv" class="btn btn-ghost">
+            <span data-i18n-es="CV profesional (ES / EN)"
+                  data-i18n-en="Professional CV (ES / EN)">
+              CV profesional (ES / EN)
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="section-inner hero-photo-wrap">
+        <div class="hero-photo">
+          <!-- IMPORTANTE: sube tu foto como carmen.jpg a la raíz del repo -->
+          <img src="carmen.jpg" alt="Carmen Esteban" />
+          <div class="hero-orbit"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVESTIGACIÓN / RESUMEN -->
+    <section id="research">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-title" data-i18n-es="Investigación actual"
+                 data-i18n-en="Current research">
+              Investigación actual
+            </div>
+            <div class="section-sub" data-i18n-es="Sistemas evolutivos con intencionalidad dinámica y meta-intención"
+                 data-i18n-en="Evolutionary systems with dynamic intentionality and meta-intention">
+              Sistemas evolutivos con intencionalidad dinámica y meta-intención
+            </div>
+          </div>
+          <span class="pill">NSGA-II · Meta-intención · Creatividad computacional</span>
+        </div>
+
+        <div class="two-col">
+          <div class="text-muted" data-i18n-es="
+            Trabajo en arquitecturas ligeras de cognición artificial que combinan:
+            <br>• algoritmos evolutivos multi-objetivo,
+            <br>• módulos de intención dinámica (sorpresa, novedad, coherencia),
+            <br>• y meta-intención como capa de autorregulación.
+            <br><br>
+            El sistema NEOSYNT ha sido sometido a una batería de experimentos (E1–E7 + módulo de meta-intención) que muestran adaptación contextual en entornos de alta varianza, con un efecto cognitivo acumulativo y robusto a las condiciones iniciales."
+            data-i18n-en="
+            I focus on lightweight artificial cognition architectures that combine:
+            <br>• multi-objective evolutionary algorithms,
+            <br>• dynamic intention modules (surprise, novelty, coherence),
+            <br>• and meta-intention as a self-regulation layer.
+            <br><br>
+            The NEOSYNT system has been evaluated through a battery of experiments (E1–E7 + meta-intention module) showing contextual adaptation in high-variance environments, with a cumulative cognitive effect robust to initial conditions.">
+            Trabajo en arquitecturas ligeras de cognición artificial que combinan:
+            <br>• algoritmos evolutivos multi-objetivo,
+            <br>• módulos de intención dinámica (sorpresa, novedad, coherencia),
+            <br>• y meta-intención como capa de autorregulación.
+            <br><br>
+            El sistema NEOSYNT ha sido sometido a una batería de experimentos (E1–E7 + módulo de meta-intención) que muestran adaptación contextual en entornos de alta varianza, con un efecto cognitivo acumulativo y robusto a las condiciones iniciales.
+          </div>
+
+          <div>
+            <div class="cv-section-title" data-i18n-es="Líneas principales"
+                 data-i18n-en="Main lines">
+              Líneas principales
+            </div>
+            <div class="badge-list">
+              <span class="badge" data-i18n-es="Sistemas evolutivos con intencionalidad"
+                    data-i18n-en="Evolutionary systems with intentionality">
+                Sistemas evolutivos con intencionalidad
+              </span>
+              <span class="badge" data-i18n-es="Motores de razonamiento trazables"
+                    data-i18n-en="Traceable reasoning engines">
+                Motores de razonamiento trazables
+              </span>
+              <span class="badge" data-i18n-es="IA explicable en medicina y derecho"
+                    data-i18n-en="Explainable AI in medicine and law">
+                IA explicable en medicina y derecho
+              </span>
+              <span class="badge" data-i18n-es="Creatividad computacional y modelos simbólicos"
+                    data-i18n-en="Computational creativity and symbolic models">
+                Creatividad computacional y modelos simbólicos
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- PROYECTOS DESTACADOS -->
-    <div class="section" id="projects">
-        <h2 id="projects_title">Proyectos destacados</h2>
-
-        <div class="project">
-            <strong>NEOSYNT</strong> — Sistema evolutivo con intencionalidad dinámica.  
-            <br><a class="link" href="https://github.com/carmenest/NEOSYNT" target="_blank">Repositorio</a>
+    <section id="projects">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-title" data-i18n-es="Proyectos destacados"
+                 data-i18n-en="Highlighted projects">
+              Proyectos destacados
+            </div>
+            <div class="section-sub" data-i18n-es="Selecciono algunos sistemas que he diseñado de principio a fin."
+                 data-i18n-en="A selection of systems that I designed end-to-end.">
+              Selecciono algunos sistemas que he diseñado de principio a fin.
+            </div>
+          </div>
         </div>
 
-        <div class="project">
-            <strong>PNEUMA CORE</strong> — Motor de razonamiento universal sin dependencias.  
-            <br><a class="link" href="https://zenodo.org/records/13736937" target="_blank">Publicación</a>
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-tag">NEOSYNT</div>
+            <div class="project-title" data-i18n-es="Sistema evolutivo con intencionalidad dinámica"
+                 data-i18n-en="Evolutionary system with dynamic intentionality">
+              Sistema evolutivo con intencionalidad dinámica
+            </div>
+            <div class="text-muted" style="font-size:0.86rem;"
+                 data-i18n-es="Extensión de NSGA-II con módulo de intenciones (sorpresa, novedad, coherencia) y meta-intención. Evaluado en 7 experimentos + ablaciones."
+                 data-i18n-en="Extension of NSGA-II with intention module (surprise, novelty, coherence) and meta-intention. Evaluated through 7 experiments + ablations.">
+              Extensión de NSGA-II con módulo de intenciones (sorpresa, novedad, coherencia) y meta-intención. Evaluado en 7 experimentos + ablaciones.
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/carmenest/NEOSYNT" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-tag">ThrombIA</div>
+            <div class="project-title" data-i18n-es="Sistema de apoyo a decisiones para trombosis"
+                 data-i18n-en="Decision support system for thromboembolic disease">
+              Sistema de apoyo a decisiones para trombosis
+            </div>
+            <div class="text-muted" style="font-size:0.86rem;"
+                 data-i18n-es="IA clínica multi-agente para el manejo de enfermedad tromboembólica, con razonamiento explicable y análisis de riesgo."
+                 data-i18n-en="Clinical multi-agent AI for thromboembolic disease management, with explainable reasoning and risk analysis.">
+              IA clínica multi-agente para el manejo de enfermedad tromboembólica, con razonamiento explicable y análisis de riesgo.
+            </div>
+            <div class="project-links">
+              <a href="https://doi.org/10.5281/zenodo.17634171" target="_blank" rel="noopener">Zenodo</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-tag">PNEUMA CORE</div>
+            <div class="project-title" data-i18n-es="Motor de razonamiento universal explicable"
+                 data-i18n-en="Universal, explainable reasoning engine">
+              Motor de razonamiento universal explicable
+            </div>
+            <div class="text-muted" style="font-size:0.86rem;"
+                 data-i18n-es="Arquitectura de razonamiento simbólico-probabilístico con mapas de resonancia conceptual y colapso bayesiano."
+                 data-i18n-en="Symbolic-probabilistic reasoning architecture with conceptual resonance maps and Bayesian collapse.">
+              Arquitectura de razonamiento simbólico-probabilístico con mapas de resonancia conceptual y colapso bayesiano.
+            </div>
+            <div class="project-links">
+              <a href="https://doi.org/10.5281/zenodo.17634172" target="_blank" rel="noopener">Zenodo</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV PROFESIONAL ES / EN -->
+    <section id="cv">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-title" data-i18n-es="CV profesional"
+                 data-i18n-en="Professional CV">
+              CV profesional
+            </div>
+            <div class="section-sub" data-i18n-es="Resumen orientado a investigación y desarrollo en IA aplicada."
+                 data-i18n-en="Profile oriented to research & development in applied AI.">
+              Resumen orientado a investigación y desarrollo en IA aplicada.
+            </div>
+          </div>
+          <div class="cv-lang-switch">
+            <button class="cv-btn active" data-cv="es">ES</button>
+            <button class="cv-btn" data-cv="en">EN</button>
+          </div>
         </div>
 
-        <div class="project">
-            <strong>THROMBIA</strong> — Sistema clínico multi-agente para decisiones en trombosis.  
-            <br><a class="link" href="https://zenodo.org/records/13736918" target="_blank">Publicación</a>
+        <!-- Versión ES -->
+        <div class="cv-grid cv-es">
+          <div>
+            <div class="cv-section-title">Perfil</div>
+            <p class="text-muted">
+              Asesora fiscal y mercantil con más de 30 años de experiencia, especializada en la
+              integración de IA en sistemas de decisión complejos. En los últimos 5+ años he diseñado
+              motores de razonamiento, sistemas multi-agente y arquitecturas neurosimbólicas
+              orientadas a casos reales en empresa, derecho y medicina.
+            </p>
+
+            <div class="cv-section-title">Competencias clave</div>
+            <ul class="cv-list text-muted">
+              <li>• Diseño de motores de razonamiento trazables y explicables.</li>
+              <li>• Arquitecturas evolutivas con intencionalidad dinámica (NSGA-II + meta-intención).</li>
+              <li>• IA aplicada a contextos regulados: fiscalidad, compliance, medicina.</li>
+              <li>• Puente entre equipos técnicos y expertos de dominio.</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="cv-section-title">Experiencia relevante</div>
+            <ul class="cv-list text-muted">
+              <li>
+                <span class="cv-pill">IAFISCAL &amp; PARTNERS · Assem Global</span><br />
+                Dirección y desarrollo de sistemas de IA aplicada para fiscalidad, legaltech y medicina,
+                incluyendo ADNIA (legal), IAFiscal (fiscalidad) y ThrombIA (soporte clínico).
+              </li>
+              <li>
+                <span class="cv-pill">30+ años · Asesoría fiscal y mercantil</span><br />
+                Diseño de estructuras societarias, optimización fiscal y acompañamiento a empresas.
+              </li>
+            </ul>
+
+            <div class="cv-section-title">Intereses actuales</div>
+            <ul class="cv-list text-muted">
+              <li>• Creatividad computacional y detección experimental de “intencionalidad” en IA.</li>
+              <li>• Sistemas cognitivos ligeros que funcionen en hardware modesto y escenarios reales.</li>
+              <li>• IA explicable en medicina y derecho con trazas auditables de decisión.</li>
+            </ul>
+          </div>
         </div>
-    </div>
 
-    <!-- CV PROFESIONAL -->
-    <div class="section" id="cv">
-        <h2 id="cv_title">CV profesional</h2>
+        <!-- Version EN -->
+        <div class="cv-grid cv-en" style="display:none;">
+          <div>
+            <div class="cv-section-title">Profile</div>
+            <p class="text-muted">
+              Tax and business advisor with 30+ years of experience, specialized in integrating AI into
+              complex decision systems. Over the last 5+ years I have designed reasoning engines,
+              multi-agent systems and neuro-symbolic architectures for real-world domains such
+              as business, law and medicine.
+            </p>
 
-        <h3 id="cv_comp_title">Competencias</h3>
-        <ul id="cv_comp">
-            <li>Diseño de arquitecturas cognitivas ligeras</li>
-            <li>Modelos evolutivos y multi-agente</li>
-            <li>Razonamiento simbólico y neurosimbólico</li>
-            <li>Creatividad computacional y evaluación experimental</li>
-            <li>Automatización basada en IA (legal, fiscal, médica)</li>
-        </ul>
+            <div class="cv-section-title">Core skills</div>
+            <ul class="cv-list text-muted">
+              <li>• Design of traceable, explainable reasoning engines.</li>
+              <li>• Evolutionary architectures with dynamic intentionality (NSGA-II + meta-intention).</li>
+              <li>• Applied AI in regulated environments: taxation, compliance, medicine.</li>
+              <li>• Bridging technical teams and domain experts.</li>
+            </ul>
+          </div>
 
-        <h3 id="cv_exp_title">Experiencia</h3>
-        <p id="cv_exp">
-            Más de 5 años desarrollando herramientas de IA aplicadas a procesos reales, 
-            incluyendo motores de razonamiento, asistentes legales, sistemas fiscales inteligentes, 
-            modelos multimodales médicos y frameworks de creatividad en IA.
+          <div>
+            <div class="cv-section-title">Relevant experience</div>
+            <ul class="cv-list text-muted">
+              <li>
+                <span class="cv-pill">IAFISCAL &amp; PARTNERS · Assem Global</span><br />
+                Lead design and development of applied AI systems for taxation, legaltech and medicine,
+                including ADNIA (legal), IAFiscal (tax) and ThrombIA (clinical decision support).
+              </li>
+              <li>
+                <span class="cv-pill">30+ years · Tax &amp; corporate advisory</span><br />
+                Design of corporate structures, tax optimisation and long-term support for companies.
+              </li>
+            </ul>
+
+            <div class="cv-section-title">Current interests</div>
+            <ul class="cv-list text-muted">
+              <li>• Computational creativity and experimental “intentionality” in AI.</li>
+              <li>• Lightweight cognitive systems running on modest hardware in real-world scenarios.</li>
+              <li>• Explainable AI for medicine and law with auditable decision traces.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICACIONES / LINKS CIENTÍFICOS -->
+    <section id="publications">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-title" data-i18n-es="Publicaciones y perfil científico"
+                 data-i18n-en="Publications & scientific profile">
+              Publicaciones y perfil científico
+            </div>
+            <div class="section-sub" data-i18n-es="Acceso directo a mis perfiles en ORCID y Zenodo."
+                 data-i18n-en="Direct access to my ORCID and Zenodo profiles.">
+              Acceso directo a mis perfiles en ORCID y Zenodo.
+            </div>
+          </div>
+        </div>
+
+        <p class="text-muted" data-i18n-es="
+          Trabajo como investigadora independiente en IA aplicada. Utilizo Zenodo para publicar
+          sistemas y artículos técnicos, y ORCID como identificador científico."
+          data-i18n-en="
+          I work as an independent researcher in applied AI. I use Zenodo to publish systems and
+          technical articles, and ORCID as my scientific identifier.">
+          Trabajo como investigadora independiente en IA aplicada. Utilizo Zenodo para publicar
+          sistemas y artículos técnicos, y ORCID como identificador científico.
         </p>
 
-        <h3 id="cv_proj_title">Proyectos de IA</h3>
-        <ul id="cv_proj">
-            <li>NEOSYNT – Sistema evolutivo de creatividad con intenciones dinámicas</li>
-            <li>PNEUMA – Razonamiento universal sin dependencias</li>
-            <li>THROMBIA – IA clínica multi-agente</li>
-            <li>ADNIA – Plataforma legal autónoma</li>
-            <li>IAFiscal – Motor fiscal inteligente</li>
-        </ul>
-    </div>
-
-    <!-- PUBLICACIONES -->
-    <div class="section" id="publications">
-        <h2 id="pub_title">Publicaciones</h2>
-        <p id="pub_intro">Lista completa disponible en Zenodo:</p>
-
-        <p>
-            <a class="link" href="https://zenodo.org/me/uploads" target="_blank">
-                https://zenodo.org/me/uploads
+        <ul class="link-list">
+          <li>
+            <strong>ORCID:</strong>
+            <a href="https://orcid.org/0009-0009-8062-5492" target="_blank" rel="noopener">
+              0009-0009-8062-5492
             </a>
-        </p>
-    </div>
+          </li>
+          <li>
+            <strong>Zenodo:</strong>
+            <a href="https://zenodo.org/me/uploads?q=&amp;f=shared_with_me%3Afalse&amp;l=list&amp;p=1&amp;s=10&amp;sort=newest"
+               target="_blank" rel="noopener">
+              Publicaciones en Zenodo
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-</div>
+    <!-- CONTACTO & OPENAI -->
+    <section id="contact">
+      <div class="section-inner">
+        <div class="section-header">
+          <div>
+            <div class="section-title" data-i18n-es="Contacto profesional"
+                 data-i18n-en="Professional contact">
+              Contacto profesional
+            </div>
+            <div class="section-sub" data-i18n-es="Colaboraciones en IA aplicada, sistemas cognitivos y creatividad computacional."
+                 data-i18n-en="Collaboration in applied AI, cognitive systems and computational creativity.">
+              Colaboraciones en IA aplicada, sistemas cognitivos y creatividad computacional.
+            </div>
+          </div>
+        </div>
 
-<!-- SCRIPT PARA CAMBIO DE IDIOMA -->
-<script>
-let lang = "es";
+        <div class="contact-grid">
+          <div>
+            <div class="cv-section-title" data-i18n-es="Por qué puede interesarme OpenAI"
+                 data-i18n-en="Why OpenAI might be interested">
+              Por qué puede interesarme OpenAI
+            </div>
+            <p class="text-muted" data-i18n-es="
+              Me interesa trabajar con equipos que combinen investigación profunda con impacto real.
+              Mi punto fuerte es llevar ideas difíciles a sistemas ejecutables, trazables y utilizables por
+              personas no técnicas."
+              data-i18n-en="
+              I am interested in working with teams that combine deep research with real-world impact.
+              My strength is turning difficult ideas into executable, traceable systems that non-technical
+              users can actually use.">
+              Me interesa trabajar con equipos que combinen investigación profunda con impacto real.
+              Mi punto fuerte es llevar ideas difíciles a sistemas ejecutables, trazables y utilizables por
+              personas no técnicas.
+            </p>
 
-function switchLang() {
-    lang = (lang === "es") ? "en" : "es";
-    document.getElementById("lang_label").innerText = lang === "es" ? "EN" : "ES";
+            <ul class="cv-list text-muted">
+              <li data-i18n-es="• Puedo diseñar arquitecturas completas desde el concepto hasta el despliegue."
+                  data-i18n-en="• I can design complete architectures from concept to deployment.">
+                • Puedo diseñar arquitecturas completas desde el concepto hasta el despliegue.
+              </li>
+              <li data-i18n-es="• Experiencia real con médicos, abogados y empresas que necesitan IA fiable."
+                  data-i18n-en="• Real experience working with doctors, lawyers and companies that need reliable AI.">
+                • Experiencia real con médicos, abogados y empresas que necesitan IA fiable.
+              </li>
+              <li data-i18n-es="• Me siento cómoda siendo la «traductora» entre investigación, producto y usuario final."
+                  data-i18n-en="• Comfortable acting as a translator between research, product and end-users.">
+                • Me siento cómoda siendo la «traductora» entre investigación, producto y usuario final.
+              </li>
+            </ul>
+          </div>
 
-    const t = {
-        es: {
-            nav_about: "Sobre mí",
-            nav_projects: "Proyectos",
-            nav_cv: "CV",
-            nav_publications: "Publicaciones",
-            title_sub: "Inteligencia Artificial Aplicada · Sistemas Cognitivos · Creatividad Computacional",
-            about_title: "Sobre mí",
-            about_text:
-                "Trabajo en la intersección entre IA aplicada, sistemas cognitivos y automatización inteligente. " +
-                "Desarrollo motores de razonamiento, modelos neurosimbólicos y sistemas multi-agente que operan en fiscalidad, derecho y medicina. " +
-                "Investigo modelos de intencionalidad dinámica y creatividad computacional.",
+          <div>
+            <div class="cv-section-title" data-i18n-es="Dónde encontrarme"
+                 data-i18n-en="Where to find me">
+              Dónde encontrarme
+            </div>
+            <ul class="link-list">
+              <li>
+                <strong>GitHub:</strong>
+                <a href="https://github.com/carmenest" target="_blank" rel="noopener">
+                  github.com/carmenest
+                </a>
+              </li>
+              <li>
+                <strong>LinkedIn:</strong>
+                <a href="https://www.linkedin.com/in/carmenest-4b495b387" target="_blank" rel="noopener">
+                  linkedin.com/in/carmenest-4b495b387
+                </a>
+              </li>
+              <li>
+                <strong>NEOSYNT:</strong>
+                <a href="https://github.com/carmenest/NEOSYNT" target="_blank" rel="noopener">
+                  Repositorio del sistema NEOSYNT
+                </a>
+              </li>
+            </ul>
 
-            projects_title: "Proyectos destacados",
+            <p class="footer-note" data-i18n-es="
+              Si quieres hablar sobre colaboración, investigación o revisar NEOSYNT en detalle,
+              estaré encantada de abrir una conversación."
+              data-i18n-en="
+              If you want to discuss collaboration, research or review NEOSYNT in detail,
+              I will be happy to start a conversation.">
+              Si quieres hablar sobre colaboración, investigación o revisar NEOSYNT en detalle,
+              estaré encantada de abrir una conversación.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-            cv_title: "CV profesional",
-            cv_comp_title: "Competencias",
-            cv_exp_title: "Experiencia",
-            cv_exp: "Más de 5 años desarrollando herramientas de IA aplicadas, motores de razonamiento y arquitecturas cognitivas.",
+  <script>
+    // --- Language toggle for text blocks ---
+    const langButtons = document.querySelectorAll('.lang-btn');
+    let currentLang = 'es';
 
-            cv_proj_title: "Proyectos de IA",
-            pub_title: "Publicaciones",
-            pub_intro: "Lista completa disponible en Zenodo:"
-        },
+    function setLang(lang) {
+      currentLang = lang;
+      langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
 
-        en: {
-            nav_about: "About",
-            nav_projects: "Projects",
-            nav_cv: "CV",
-            nav_publications: "Publications",
-            title_sub: "Applied Artificial Intelligence · Cognitive Systems · Computational Creativity",
-            about_title: "About me",
-            about_text:
-                "I work at the intersection of applied AI, cognitive systems, and intelligent automation. " +
-                "I design reasoning engines, neurosymbolic models, and multi-agent systems operating in real domains such as law, taxation and medicine. " +
-                "My research focuses on dynamic intentionality and computational creativity.",
-
-            projects_title: "Highlighted Projects",
-
-            cv_title: "Professional CV",
-            cv_comp_title: "Core Skills",
-            cv_exp_title: "Experience",
-            cv_exp: "Over 5 years building real-world AI systems: reasoning engines, cognitive architectures, legal AI and medical models.",
-
-            cv_proj_title: "AI Projects",
-            pub_title: "Publications",
-            pub_intro: "Complete list available on Zenodo:"
-        }
-    };
-
-    // Actualiza todos los elementos
-    for (let key in t[lang]) {
-        const el = document.getElementById(key);
-        if (el) el.innerHTML = t[lang][key];
+      // Elements with data-i18n-*
+      document.querySelectorAll('[data-i18n-es]').forEach(el => {
+        const es = el.getAttribute('data-i18n-es');
+        const en = el.getAttribute('data-i18n-en') || es;
+        el.innerHTML = (lang === 'es') ? es : en;
+      });
     }
-}
-</script>
 
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    // --- CV toggle ES / EN ---
+    const cvButtons = document.querySelectorAll('.cv-btn');
+    const cvEs = document.querySelector('.cv-es');
+    const cvEn = document.querySelector('.cv-en');
+
+    cvButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        cvButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (btn.dataset.cv === 'es') {
+          cvEs.style.display = 'grid';
+          cvEn.style.display = 'none';
+          setLang('es');
+        } else {
+          cvEs.style.display = 'none';
+          cvEn.style.display = 'grid';
+          setLang('en');
+        }
+      });
+    });
+
+    // Inicializar en ES
+    setLang('es');
+  </script>
 </body>
 </html>
