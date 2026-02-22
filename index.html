@@ -172,6 +172,7 @@ h1, h2, h3 {
     <li onclick="scrollToId('sobre')">Sobre mí</li>
     <li onclick="scrollToId('investigacion')">Investigación</li>
     <li onclick="scrollToId('proyectos')">Proyectos</li>
+    <li onclick="scrollToId('opensource')">Open Source</li>
     <li onclick="scrollToId('publics')">Publicaciones</li>
     <li onclick="scrollToId('contact')">Contacto</li>
   </ul>
@@ -210,6 +211,7 @@ h1, h2, h3 {
     <li id="l2">Meta-intención y sistemas auto-regulados</li>
     <li id="l3">Cognición ligera para entornos reales</li>
     <li id="l4">Creatividad computacional y patrones simbólicos</li>
+    <li id="l5">Complejidad de pruebas algebraicas y cotas inferiores para IPS</li>
   </ul>
 </div>
 
@@ -235,6 +237,75 @@ h1, h2, h3 {
   <p id="pn">
     Motor de razonamiento universal explicable basado en inferencia multicapas,
     reglas simbólicas y resonancia conceptual.
+  </p>
+
+  <h3>PHP-ENTRELAZADO</h3>
+  <p id="phpe">
+    Variante del Principio del Palomar (Pigeonhole Principle) enriquecida con variables
+    de orden y restricciones de transitividad. Candidato para demostrar cotas inferiores
+    superpolinomiales en el sistema IPS (Ideal Proof System), lo cual implicaría VNP &ne; VP.
+    <br><br>
+    <strong>Resultados:</strong> fooling set de (n+1)! elementos, complejidad de fórmula multilineal
+    2<sup>&Omega;(n)</sup> para el polinomio de orden total Q(y), grado mínimo del certificado IPS = 2n
+    (verificado computacionalmente para n=2,3,4 en GPU A100).
+    <br><br>
+    <a href="https://github.com/iafiscal1212/PHP-Entangled-Complexity" target="_blank">GitHub</a> &middot;
+    <a href="https://github.com/iafiscal1212/Selector-Complexity-Framework" target="_blank">Selector Complexity Framework</a>
+  </p>
+
+  <h3>ORIGINMAP</h3>
+  <p id="om">
+    Laboratorio computacional de análisis de meteoritos. Demuestra cómo la estructura aparente
+    desaparece bajo modelos nulos adecuados.
+    <br>
+    <a href="https://www.kaggle.com/code/caresment/when-big-data-lies" target="_blank">Kaggle: When Big Data Lies</a> &middot;
+    <a href="https://github.com/carmenest/ORIGINMAP" target="_blank">GitHub</a>
+  </p>
+</div>
+
+<!-- ---------------- OPEN SOURCE / PYPI ---------------- -->
+<div class="card fade" id="opensource">
+  <h2>Open Source &middot; PyPI</h2>
+
+  <p id="pypi_intro">
+    Paquetes Python publicados en <a href="https://pypi.org" target="_blank">PyPI</a>,
+    instalables con <code style="background:#1b1b22;padding:0.2rem 0.5rem;border-radius:6px;">pip install nombre</code>.
+  </p>
+
+  <h3><a href="https://pypi.org/project/aip-engine/" target="_blank">aip-engine</a> <span class="small">v0.4.1</span></h3>
+  <p id="pypi_aip">
+    Algebraic Independence Processor. Auto-detección de estructura matricial y
+    computación eficiente en memoria para sistemas sparse ultra-grandes.
+    Motor Accordion para resolver sistemas IPS con cientos de millones de incógnitas.
+  </p>
+
+  <h3><a href="https://pypi.org/project/sc-router/" target="_blank">sc-router</a> <span class="small">v0.2.0</span></h3>
+  <p id="pypi_sc">
+    Enrutamiento de consultas IA basado en la teoría de Selector Complexity.
+    Clasifica queries por dificultad de enrutamiento (SC 0-3) para dirigirlas al modelo
+    óptimo.
+  </p>
+
+  <h3><a href="https://pypi.org/project/aip-proxy/" target="_blank">aip-proxy</a> <span class="small">v0.1.0</span></h3>
+  <p id="pypi_proxy">
+    Proxy de compresión de tokens para APIs LLM. Reduce costes 15-40% en cualquier
+    IDE de IA (Cursor, VS Code, etc.).
+  </p>
+
+  <h3><a href="https://pypi.org/project/kore-mind/" target="_blank">kore-mind</a> <span class="small">v0.5.0</span></h3>
+  <p id="pypi_korem">
+    Motor de memoria persistente e identidad emergente para cualquier LLM.
+  </p>
+
+  <h3><a href="https://pypi.org/project/kore-bridge/" target="_blank">kore-bridge</a> <span class="small">v0.3.2</span></h3>
+  <p id="pypi_koreb">
+    Capa de integración LLM para kore-mind. Puente cognitivo agnóstico al runtime.
+  </p>
+
+  <h3><a href="https://pypi.org/project/kore-stack/" target="_blank">kore-stack</a> <span class="small">v0.1.2</span></h3>
+  <p id="pypi_kores">
+    Stack cognitivo completo para LLMs. Memoria + enrutamiento SC + caché + observabilidad
+    en una sola instalación.
   </p>
 </div>
 
@@ -296,33 +367,41 @@ function toggleLang() {
   lang = lang === "ES" ? "EN" : "ES";
 
   const ES = {
-    intro: "Trabajo en arquitecturas cognitivas ligeras basadas en intencionalidad dinámica...",
-    inv: "Exploro modelos de cognición artificial...",
+    intro: "Trabajo en arquitecturas cognitivas ligeras basadas en intencionalidad dinámica, meta-intención y adaptación contextual. Diseño motores de razonamiento que operan con precisión en dominios complejos como fiscalidad, derecho, medicina y creatividad computacional.",
+    inv: "Exploro modelos de cognición artificial que integran señales de intención, autoconservación del sistema, adaptación a entornos de alta varianza y creatividad computacional. Mi enfoque se centra en mecanismos no lineales donde la agencia emerge de forma estructurada.",
     l1: "Modelos evolutivos con intencionalidad dinámica",
     l2: "Meta-intención y sistemas auto-regulados",
     l3: "Cognición ligera para entornos reales",
     l4: "Creatividad computacional y patrones simbólicos",
-    ne: "Sistema evolutivo con intencionalidad dinámica...",
-    th: "Sistema clínico de apoyo a decisiones para trombosis...",
-    pn: "Motor de razonamiento universal explicable...",
-    pubtxt: "Trabajo como investigadora independiente...",
-    txtcontact: "Me interesa colaborar en investigación aplicada...",
-    openai: "Diseño arquitectura conceptual desde cero..."
+    l5: "Complejidad de pruebas algebraicas y cotas inferiores para IPS",
+    ne: "Sistema evolutivo con intencionalidad dinámica. NEOSYNT incorpora señales internas (I_S, I_N, I_C), meta-intención, adaptación contextual y divergencia acumulativa bajo alta varianza.",
+    th: "Sistema clínico de apoyo a decisiones para trombosis basado en IA explicable. Publicado en Zenodo y presentado como sistema multi-agente capaz de producir recomendaciones trazables.",
+    pn: "Motor de razonamiento universal explicable basado en inferencia multicapas, reglas simbólicas y resonancia conceptual.",
+    phpe: 'Variante del Principio del Palomar enriquecida con variables de orden y restricciones de transitividad. Candidato para demostrar cotas inferiores superpolinomiales en IPS (Ideal Proof System), lo cual implicaría VNP &ne; VP.<br><br><strong>Resultados:</strong> fooling set de (n+1)! elementos, complejidad 2<sup>&Omega;(n)</sup> para Q(y), grado mínimo IPS = 2n (verificado para n=2,3,4 en GPU A100).<br><br><a href="https://github.com/iafiscal1212/PHP-Entangled-Complexity" target="_blank">GitHub</a> &middot; <a href="https://github.com/iafiscal1212/Selector-Complexity-Framework" target="_blank">Selector Complexity Framework</a>',
+    om: 'Laboratorio computacional de análisis de meteoritos. Demuestra cómo la estructura aparente desaparece bajo modelos nulos adecuados.<br><a href="https://www.kaggle.com/code/caresment/when-big-data-lies" target="_blank">Kaggle: When Big Data Lies</a> &middot; <a href="https://github.com/carmenest/ORIGINMAP" target="_blank">GitHub</a>',
+    pypi_intro: 'Paquetes Python publicados en <a href="https://pypi.org" target="_blank">PyPI</a>, instalables con <code style="background:#1b1b22;padding:0.2rem 0.5rem;border-radius:6px;">pip install nombre</code>.',
+    pubtxt: "Trabajo como investigadora independiente en IA aplicada. Uso Zenodo y ORCID como base de referencia científica verificable.",
+    txtcontact: "Me interesa colaborar en investigación aplicada con impacto real. Mis líneas principales encajan con arquitecturas ligeras, cognición artificial, creatividad computacional y nuevos enfoques de intencionalidad en IA.",
+    openai: "Diseño arquitectura conceptual y experimental desde cero. Busco siempre estructuras nuevas, no soluciones repetidas. Mi enfoque mezcla intención, dinámica, interpretabilidad y exploración. Me gusta construir sistemas que piensan diferente."
   };
 
   const EN = {
-    intro: "I work on lightweight cognitive architectures based on dynamic intentionality...",
-    inv: "I explore artificial cognition models...",
+    intro: "I work on lightweight cognitive architectures based on dynamic intentionality, meta-intention and contextual adaptation. I design reasoning engines that operate precisely in complex domains like taxation, law, medicine and computational creativity.",
+    inv: "I explore artificial cognition models integrating intention signals, system self-preservation, adaptation to high-variance environments and computational creativity. My focus is on nonlinear mechanisms where agency emerges in a structured way.",
     l1: "Evolutionary models with dynamic intentionality",
     l2: "Meta-intention and self-regulated systems",
     l3: "Lightweight cognition for real environments",
     l4: "Computational creativity and symbolic patterns",
-    ne: "Evolutionary system with dynamic intentionality...",
-    th: "Clinical decision support system for thrombosis...",
-    pn: "Universal explainable reasoning engine...",
-    pubtxt: "I work as an independent researcher...",
-    txtcontact: "I am interested in applied research collaborations...",
-    openai: "I design conceptual architecture from scratch..."
+    l5: "Algebraic proof complexity and IPS lower bounds",
+    ne: "Evolutionary system with dynamic intentionality. NEOSYNT incorporates internal signals (I_S, I_N, I_C), meta-intention, contextual adaptation and cumulative divergence under high variance.",
+    th: "Clinical decision support system for thrombosis using explainable AI. Published on Zenodo as a multi-agent system producing traceable recommendations.",
+    pn: "Universal explainable reasoning engine based on multi-layer inference, symbolic rules and conceptual resonance.",
+    phpe: 'A variant of the Pigeonhole Principle enriched with ordering variables and transitivity constraints. Candidate for proving super-polynomial lower bounds in IPS (Ideal Proof System), which would imply VNP &ne; VP.<br><br><strong>Results:</strong> fooling set of (n+1)! elements, multilinear formula complexity 2<sup>&Omega;(n)</sup> for Q(y), minimum IPS certificate degree = 2n (verified for n=2,3,4 on A100 GPU).<br><br><a href="https://github.com/iafiscal1212/PHP-Entangled-Complexity" target="_blank">GitHub</a> &middot; <a href="https://github.com/iafiscal1212/Selector-Complexity-Framework" target="_blank">Selector Complexity Framework</a>',
+    om: 'Computational laboratory for meteorite analysis. Demonstrates how apparent structure vanishes under proper null models.<br><a href="https://www.kaggle.com/code/caresment/when-big-data-lies" target="_blank">Kaggle: When Big Data Lies</a> &middot; <a href="https://github.com/carmenest/ORIGINMAP" target="_blank">GitHub</a>',
+    pypi_intro: 'Python packages published on <a href="https://pypi.org" target="_blank">PyPI</a>, installable with <code style="background:#1b1b22;padding:0.2rem 0.5rem;border-radius:6px;">pip install name</code>.',
+    pubtxt: "I work as an independent AI researcher. I use Zenodo and ORCID as verifiable scientific references.",
+    txtcontact: "I am interested in applied research collaborations with real impact. My main research lines align with lightweight architectures, artificial cognition, computational creativity and novel approaches to intentionality in AI.",
+    openai: "I design conceptual and experimental architecture from scratch. I always look for new structures, not repeated solutions. My approach blends intention, dynamics, interpretability and exploration. I like building systems that think differently."
   };
 
   const dict = lang === "ES" ? ES : EN;
@@ -333,9 +412,13 @@ function toggleLang() {
   document.getElementById("l2").innerHTML    = dict.l2;
   document.getElementById("l3").innerHTML    = dict.l3;
   document.getElementById("l4").innerHTML    = dict.l4;
+  document.getElementById("l5").innerHTML    = dict.l5;
   document.getElementById("ne").innerHTML    = dict.ne;
   document.getElementById("th").innerHTML    = dict.th;
   document.getElementById("pn").innerHTML    = dict.pn;
+  document.getElementById("phpe").innerHTML  = dict.phpe;
+  document.getElementById("om").innerHTML    = dict.om;
+  document.getElementById("pypi_intro").innerHTML = dict.pypi_intro;
   document.getElementById("pubtxt").innerHTML = dict.pubtxt;
   document.getElementById("txtcontact").innerHTML = dict.txtcontact;
   document.getElementById("openaimsg").innerHTML = "<strong>" +
