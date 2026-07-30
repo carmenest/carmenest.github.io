@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software público en PyPI | Carmen Esteban</title>
+  <meta name="description" content="Paquetes públicos en PyPI de Carmen Esteban e IAFiscal: AIP, KORE, LLM EKG, TORC, AEGIS y herramientas de software verificable.">
+  <meta name="author" content="Carmen Esteban">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://carmen-esteban.com/opensource/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Software público en PyPI | IAFiscal">
+  <meta property="og:description" content="Paquetes Python publicados para IA aplicada, software verificable, routing cognitivo, seguridad, benchmarking y complejidad algebraica.">
+  <meta property="og:url" content="https://carmen-esteban.com/opensource/">
+  <meta property="og:image" content="https://carmen-esteban.com/carmen.jpg">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17212b;
+      --muted: #5a6674;
+      --line: #d7dee5;
+      --soft: #eef2f5;
+      --accent: #0f6d73;
+      --accent-strong: #0a4f55;
+      --warm: #ba7b2a;
+      --content: 1080px;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: #f8fafb;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-strong);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav,
+    main,
+    footer {
+      width: min(var(--content), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand strong {
+      color: var(--ink);
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .hero {
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(180px, 260px);
+      gap: clamp(2rem, 6vw, 4rem);
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: var(--warm);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin: 0;
+      font-size: clamp(2.35rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 1.25rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.22rem);
+    }
+
+    .portrait {
+      justify-self: end;
+      width: min(100%, 240px);
+      border-radius: 50%;
+      border: 1px solid #fff;
+      box-shadow: 0 16px 45px rgba(25, 40, 55, 0.12);
+    }
+
+    section {
+      padding: 2.4rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .package {
+      min-height: 165px;
+      padding: 1rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .package h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.2;
+    }
+
+    .version {
+      color: var(--warm);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .package p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    footer {
+      padding: 1.4rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero,
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        justify-self: start;
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav" aria-label="Principal">
+      <a class="brand" href="/">
+        <strong>Carmen Esteban</strong>
+        <span>Arquitectura IA e investigación aplicada</span>
+      </a>
+      <a href="/">Portfolio principal</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div>
+        <p class="eyebrow">Software público en PyPI</p>
+        <h1 id="title">Paquetes Python publicados para IA aplicada y software verificable.</h1>
+        <p class="lead">
+          Esta ruta recoge los paquetes PyPI públicos vinculados al trabajo de Carmen Esteban e IAFiscal:
+          routing cognitivo, memoria persistente, observabilidad, seguridad, benchmarking, complejidad algebraica,
+          SAT topológico y herramientas instalables para sistemas IA.
+        </p>
+        <div class="links">
+          <a class="button primary" href="https://pypi.org/project/aip-engine/" target="_blank" rel="noopener noreferrer">Ver aip-engine en PyPI</a>
+          <a class="button" href="https://github.com/iafiscal1212" target="_blank" rel="noopener noreferrer">GitHub iafiscal1212</a>
+          <a class="button" href="/">Portfolio completo</a>
+        </div>
+      </div>
+      <img class="portrait" src="/carmen.jpg" alt="Carmen Esteban">
+    </section>
+
+    <section aria-labelledby="packages-title">
+      <h2 id="packages-title">Paquetes principales</h2>
+      <div class="package-grid">
+        <article class="package">
+          <h3><a href="https://pypi.org/project/aip-engine/" target="_blank" rel="noopener noreferrer">aip-engine</a></h3>
+          <span class="version">v0.5.1</span>
+          <p>Algebraic Independence Processor para estructura matricial y computación sparse ultra-grande.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/sc-router/" target="_blank" rel="noopener noreferrer">sc-router</a></h3>
+          <span class="version">v0.4.1</span>
+          <p>Routing de consultas IA basado en Selector Complexity y niveles de dificultad SC.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/aip-proxy/" target="_blank" rel="noopener noreferrer">aip-proxy</a></h3>
+          <span class="version">v0.1.1</span>
+          <p>Proxy de compresión de tokens para reducir coste y ruido operativo en APIs LLM.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/llm-ekg/" target="_blank" rel="noopener noreferrer">llm-ekg</a></h3>
+          <span class="version">v1.1.1</span>
+          <p>Monitor matemático de salud para LLMs: degradación, drift y señales de alucinación.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/kore-engine/" target="_blank" rel="noopener noreferrer">kore-engine</a></h3>
+          <span class="version">v0.2.1</span>
+          <p>Motor de conocimiento inteligente con cache, comprensión y decisión en un paquete.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/kore-mind/" target="_blank" rel="noopener noreferrer">kore-mind</a></h3>
+          <span class="version">v0.5.1</span>
+          <p>Memoria persistente e identidad emergente para sistemas LLM.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/kore-bridge/" target="_blank" rel="noopener noreferrer">kore-bridge</a></h3>
+          <span class="version">v0.3.3</span>
+          <p>Capa de integración LLM para kore-mind, agnóstica al runtime.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/kore-stack/" target="_blank" rel="noopener noreferrer">kore-stack</a></h3>
+          <span class="version">v0.1.3</span>
+          <p>Stack cognitivo completo: memoria, routing, cache y observabilidad.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/aegis-security/" target="_blank" rel="noopener noreferrer">aegis-security</a></h3>
+          <span class="version">v1.0.0</span>
+          <p>Guardian de entorno e integridad para seguridad de supply chain en desarrollo IA.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/aip-bench-suite/" target="_blank" rel="noopener noreferrer">aip-bench-suite</a></h3>
+          <span class="version">v0.1.1</span>
+          <p>Benchmarking para alucinación, eficiencia de inferencia y compresión QA.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/torc-portfolio/" target="_blank" rel="noopener noreferrer">torc-portfolio</a></h3>
+          <span class="version">v0.1.0</span>
+          <p>Verificador de factibilidad de carteras con LP, MIP, CVaR e IIS.</p>
+        </article>
+        <article class="package">
+          <h3><a href="https://pypi.org/project/torc-sat/" target="_blank" rel="noopener noreferrer">torc-sat</a></h3>
+          <span class="version">v0.1.1</span>
+          <p>Preprocesador SAT topológico con obstrucciones cohomológicas.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Última revisión: 31 julio 2026. Ruta pública estable para LinkedIn: https://carmen-esteban.com/opensource/</p>
+  </footer>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Software público en PyPI | IAFiscal",
+    "url": "https://carmen-esteban.com/opensource/",
+    "about": "Paquetes Python públicos de Carmen Esteban e IAFiscal",
+    "author": {
+      "@type": "Person",
+      "name": "Carmen Esteban",
+      "url": "https://carmen-esteban.com/"
+    }
+  }
+  </script>
+</body>
+</html>
