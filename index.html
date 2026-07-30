@@ -1,585 +1,1160 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carmen Esteban — Cognitive Architect</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carmen Esteban | Arquitectura IA, investigación aplicada y software verificable</title>
+  <meta name="description" content="Portfolio profesional de Carmen Esteban: arquitectura de IA, fiscalidad, software verificable, publicaciones, PyPI, Hugging Face, ORCID y Zenodo.">
+  <meta name="author" content="Carmen Esteban">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://carmen-esteban.com/">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Carmen Esteban | Arquitectura IA e investigación aplicada">
+  <meta property="og:description" content="Proyectos, publicaciones y software público de Carmen Esteban: IAFiscal, KORE, AIP, TORC, LLM EKG, Hugging Face, ORCID y Zenodo.">
+  <meta property="og:url" content="https://carmen-esteban.com/">
+  <meta property="og:image" content="https://carmen-esteban.com/carmen.jpg">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17212b;
+      --muted: #5a6674;
+      --soft: #eef2f5;
+      --line: #d7dee5;
+      --panel: #ffffff;
+      --accent: #0f6d73;
+      --accent-strong: #0a4f55;
+      --warm: #ba7b2a;
+      --warm-soft: #fff3e4;
+      --blue-soft: #e8f1fb;
+      --green-soft: #e8f5ed;
+      --shadow: 0 16px 50px rgba(25, 40, 55, 0.09);
+      --radius: 8px;
+      --content: 1180px;
+    }
 
-/* ------------------------- */
-/* VARIABLES Y BASE */
-/* ------------------------- */
-:root {
-  --bg: #0b0b0f;
-  --card: #14141b;
-  --accent: #e0b869;
-  --text: #e6e6e6;
-  --text-soft: #a5a5a5;
-  --radius: 14px;
-  --transition: 0.25s ease;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* ------------------------- */
-/* MENÚ SUPERIOR */
-/* ------------------------- */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(10,10,15,0.6);
-  backdrop-filter: blur(8px);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 50;
-}
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f8fafb;
+      color: var(--ink);
+      line-height: 1.6;
+    }
 
-nav .name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--accent);
-}
+    a {
+      color: var(--accent-strong);
+      text-decoration: none;
+    }
 
-nav ul {
-  display: flex;
-  gap: 1.8rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-nav ul li {
-  cursor: pointer;
-  transition: var(--transition);
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-nav ul li:hover {
-  color: var(--accent);
-}
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 1rem;
+      background: var(--ink);
+      color: #fff;
+      padding: 0.6rem 0.8rem;
+      z-index: 100;
+    }
 
-.lang-switch {
-  background: #1b1b22;
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: var(--transition);
-}
-.lang-switch:hover {
-  background: var(--accent);
-  color: #000;
-}
+    .skip-link:focus {
+      left: 1rem;
+    }
 
-/* ------------------------- */
-/* LAYOUT */
-/* ------------------------- */
-.container {
-  max-width: 900px;
-  margin: 8rem auto 4rem auto;
-  padding: 0 2rem;
-}
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 250, 251, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
 
-.card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 2rem;
-  margin-bottom: 2rem;
-  border: 1px solid #222;
-}
+    .nav {
+      width: min(var(--content), calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-/* ------------------------- */
-/* FOTO Y PRESENTACIÓN */
-/* ------------------------- */
-.profile {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      min-width: 190px;
+    }
 
-.profile img {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-}
+    .brand strong {
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
 
-/* ------------------------- */
-/* LINKS Y BOTONES */
-/* ------------------------- */
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+    .brand span {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
 
-.btn {
-  display: inline-block;
-  margin-top: 1rem;
-  background: var(--accent);
-  color: #000;
-  padding: 0.7rem 1.2rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  transition: var(--transition);
-}
-.btn:hover {
-  background: #fff;
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
 
-/* ------------------------- */
-/* TITULOS */
-/* ------------------------- */
-h1, h2, h3 {
-  margin-top: 0;
-}
+    .nav-links a {
+      color: var(--ink);
+      font-size: 0.88rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 999px;
+    }
 
-/* ------------------------- */
-/* TEXTO PEQUEÑO */
-.small {
-  color: var(--text-soft);
-}
+    .nav-links a:hover {
+      background: var(--soft);
+      text-decoration: none;
+    }
 
-/* ------------------------- */
-/* ANIMACIONES SUAVES */
-.fade {
-  animation: fadeIn 1.2s ease forwards;
-  opacity: 0;
-}
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
+    .hero {
+      background:
+        linear-gradient(90deg, rgba(248, 250, 251, 0.98) 0%, rgba(248, 250, 251, 0.92) 50%, rgba(248, 250, 251, 0.74) 100%),
+        url("carmen.jpg") right center / min(46vw, 520px) auto no-repeat;
+      border-bottom: 1px solid var(--line);
+    }
 
-</style>
+    .hero-inner {
+      width: min(var(--content), calc(100% - 32px));
+      min-height: min(760px, calc(100vh - 64px));
+      margin: 0 auto;
+      padding: clamp(3rem, 8vw, 6rem) 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 5rem);
+    }
+
+    .hero-copy {
+      max-width: 740px;
+    }
+
+    .eyebrow {
+      color: var(--accent-strong);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin: 0 0 1rem;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+      max-width: 720px;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      margin: 1.3rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.75rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ink);
+      background: #fff;
+      font-weight: 700;
+      box-shadow: 0 6px 22px rgba(25, 40, 55, 0.06);
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .portrait {
+      align-self: end;
+      width: min(100%, 340px);
+      margin-left: auto;
+    }
+
+    .portrait img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      box-shadow: var(--shadow);
+    }
+
+    main {
+      background: #fff;
+    }
+
+    section {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-inner {
+      width: min(var(--content), calc(100% - 32px));
+      margin: 0 auto;
+      padding: clamp(2.8rem, 6vw, 5rem) 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(160px, 280px) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .section-kicker {
+      margin: 0.15rem 0 0;
+      color: var(--warm);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.05rem;
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      min-height: 100%;
+      padding: 1.15rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(25, 40, 55, 0.045);
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.9rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0.18rem 0.5rem;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag.public {
+      background: var(--green-soft);
+      color: #22613c;
+    }
+
+    .tag.research {
+      background: var(--blue-soft);
+      color: #255c8c;
+    }
+
+    .tag.private {
+      background: var(--warm-soft);
+      color: #7a4b12;
+    }
+
+    .project-list {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: minmax(170px, 0.45fr) minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: start;
+      padding: 1rem 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .project-row:first-child {
+      border-top: 0;
+    }
+
+    .project-row p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .project-row .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.55rem;
+      min-width: 150px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .package {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      min-height: 160px;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .package .version {
+      color: var(--warm);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .package p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .model-list,
+    .pub-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .list-row {
+      display: grid;
+      grid-template-columns: minmax(210px, 0.4fr) minmax(0, 1fr) minmax(96px, auto);
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .list-row p,
+    .list-row span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .list-row .year {
+      color: var(--warm);
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .quote-band {
+      background: var(--accent-strong);
+      color: #fff;
+    }
+
+    .quote-band .section-inner {
+      padding: clamp(2.3rem, 5vw, 4rem) 0;
+    }
+
+    .quote-band p {
+      max-width: 980px;
+      font-size: clamp(1.35rem, 3vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .contact-links a {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .contact-links span {
+      color: var(--muted);
+      font-weight: 600;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      background: #f8fafb;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    footer .section-inner {
+      padding: 1.25rem 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        background:
+          linear-gradient(180deg, rgba(248, 250, 251, 0.98) 0%, rgba(248, 250, 251, 0.96) 100%),
+          url("carmen.jpg") right top / 300px auto no-repeat;
+      }
+
+      .hero-inner,
+      .section-head,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portrait {
+        margin: 0;
+        width: 220px;
+      }
+
+      .grid.three,
+      .grid.two,
+      .package-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-row,
+      .list-row {
+        grid-template-columns: 1fr;
+      }
+
+      .project-row .links,
+      .list-row .year {
+        justify-content: flex-start;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 0.75rem 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding-top: 2.5rem;
+      }
+
+      .package-grid,
+      .grid.three,
+      .grid.two {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .contact-links a {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .contact-links span {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<!-- ---------------- NAV ---------------- -->
-<nav>
-  <div class="name">Carmen Esteban</div>
-  <ul>
-    <li onclick="scrollToId('sobre')">Sobre mí</li>
-    <li onclick="scrollToId('investigacion')">Investigación</li>
-    <li onclick="scrollToId('proyectos')">Proyectos</li>
-    <li onclick="scrollToId('opensource')">Open Source</li>
-    <li onclick="scrollToId('publics')">Publicaciones</li>
-    <li onclick="scrollToId('contact')">Contacto</li>
-  </ul>
-  <div class="lang-switch" onclick="toggleLang()">ES / EN</div>
-</nav>
+  <header class="topbar">
+    <nav class="nav" aria-label="Principal">
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <strong>Carmen Esteban</strong>
+        <span>Arquitectura IA e investigación aplicada</span>
+      </a>
+      <div class="nav-links" aria-label="Secciones">
+        <a href="#perfil">Perfil</a>
+        <a href="#plataformas">Plataformas</a>
+        <a href="#opensource">PyPI</a>
+        <a href="#huggingface">Hugging Face</a>
+        <a href="#investigacion">Investigación</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
 
-<div class="container">
-
-<!-- ---------------- PRESENTACIÓN ---------------- -->
-<div class="card fade" id="sobre">
-  <div class="profile">
-    <img src="carmen.jpg" alt="Carmen Esteban">
-    <div>
-      <h1>Cognitive Architect · Researcher in Intentional AI Systems</h1>
-      <p id="intro">
-        Trabajo en arquitecturas cognitivas ligeras basadas en intencionalidad dinámica,
-        meta-intención y adaptación contextual. Diseño motores de razonamiento que operan con
-        precisión en dominios complejos como fiscalidad, derecho, medicina y creatividad computacional.
-      </p>
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Fiscalidad, software verificable y sistemas IA</p>
+        <h1 id="hero-title">Carmen Esteban</h1>
+        <p class="subtitle">
+          Asesora fiscal con más de 30 años de experiencia y constructora de plataformas de IA aplicada:
+          fiscalidad, derecho, salud, arquitectura cognitiva, complejidad algebraica y herramientas
+          open source para sistemas verificables.
+        </p>
+        <div class="hero-actions" aria-label="Enlaces principales">
+          <a class="button primary" href="https://www.linkedin.com/in/carmenest-4b495b387" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="button" href="https://github.com/iafiscal1212" target="_blank" rel="noopener noreferrer">GitHub iafiscal1212</a>
+          <a class="button" href="https://orcid.org/0009-0009-8062-5492" target="_blank" rel="noopener noreferrer">ORCID</a>
+          <a class="button" href="https://huggingface.co/Carmenest" target="_blank" rel="noopener noreferrer">Hugging Face</a>
+        </div>
+      </div>
+      <figure class="portrait" aria-label="Fotografia de Carmen Esteban">
+        <img src="carmen.jpg" alt="Carmen Esteban">
+      </figure>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- ---------------- INVESTIGACIÓN ---------------- -->
-<div class="card fade" id="investigacion">
-  <h2>Investigación actual</h2>
-  <p id="inv">
-    Exploro modelos de cognición artificial que integran señales de intención,
-    autoconservación del sistema, adaptación a entornos de alta varianza y creatividad computacional.
-    Mi enfoque se centra en mecanismos no lineales donde la agencia emerge de forma estructurada.
-  </p>
+  <main id="contenido">
+    <section id="perfil" aria-labelledby="perfil-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="section-kicker">Perfil</p>
+          <div>
+            <h2 id="perfil-title">Arquitectura desde dominio real.</h2>
+            <p class="lead">
+              Construyo sistemas que nacen de problemas operativos concretos: fiscalidad, revisión humana,
+              trazabilidad, evidencia, automatizacion responsable y modelos que deben rendir cuentas. Mi trabajo
+              conecta experiencia profesional, investigación independiente y desarrollo de software público.
+            </p>
+          </div>
+        </div>
+        <div class="grid three">
+          <article class="card">
+            <h3>Fiscalidad y operación</h3>
+            <p>Mas de tres decadas asesorando empresas y convirtiendo flujos fiscales complejos en sistemas operables.</p>
+            <div class="tag-row">
+              <span class="tag">AEAT</span>
+              <span class="tag">VeriFactu</span>
+              <span class="tag">revisión humana</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>IA aplicada</h3>
+            <p>Arquitecturas multiagente, memoria persistente, routing cognitivo, trazabilidad y control de alucinacion.</p>
+            <div class="tag-row">
+              <span class="tag">agentes</span>
+              <span class="tag">observabilidad</span>
+              <span class="tag">seguridad</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Investigacion verificable</h3>
+            <p>Publicaciones, software, datasets y modelos enlazados a repositorios, PyPI, Zenodo, ORCID y Hugging Face.</p>
+            <div class="tag-row">
+              <span class="tag public">público</span>
+              <span class="tag research">DOI</span>
+              <span class="tag research">model cards</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <h3>Líneas principales</h3>
-  <ul>
-    <li id="l1">Modelos evolutivos con intencionalidad dinámica</li>
-    <li id="l2">Meta-intención y sistemas auto-regulados</li>
-    <li id="l3">Cognición ligera para entornos reales</li>
-    <li id="l4">Creatividad computacional y patrones simbólicos</li>
-    <li id="l5">Complejidad de pruebas algebraicas y cotas inferiores para IPS</li>
-    <li id="l6">Optimizacion combinatoria de carteras y SAT topologico (TORC)</li>
-  </ul>
-</div>
+    <section class="quote-band" aria-label="Resumen profesional">
+      <div class="section-inner">
+        <p>
+          Perfil híbrido: asesoría fiscal de producción, construcción de plataformas IA y publicación de artefactos
+          verificables para que el trabajo pueda ser revisado, instalado, citado o ejecutado.
+        </p>
+      </div>
+    </section>
 
-<!-- ---------------- PROYECTOS ---------------- -->
-<div class="card fade" id="proyectos">
-  <h2>Proyectos destacados</h2>
+    <section id="plataformas" aria-labelledby="plataformas-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="section-kicker">Plataformas</p>
+          <div>
+            <h2 id="plataformas-title">Aplicaciones y líneas de producto.</h2>
+            <p class="lead">
+              Estas plataformas resumen el eje aplicado: sistemas para fiscalidad, derecho, salud, comunidades,
+              operaciones con IA y experimentación científica. Cuando el código no es público, el enlace se limita
+              a referencias públicas o publicaciones.
+            </p>
+          </div>
+        </div>
+        <div class="project-list">
+          <article class="project-row">
+            <div>
+              <h3>IAFiscal</h3>
+              <div class="tag-row">
+                <span class="tag private">plataforma privada</span>
+                <span class="tag">fiscal</span>
+              </div>
+            </div>
+            <p>SaaS fiscal con automatización supervisada, modelos AEAT, gestión documental, revisión humana y trazabilidad para asesorías.</p>
+            <div class="links">
+              <a href="https://doi.org/10.5281/zenodo.20731219" target="_blank" rel="noopener noreferrer">Zenodo</a>
+            </div>
+          </article>
+          <article class="project-row">
+            <div>
+              <h3>adnIA</h3>
+              <div class="tag-row">
+                <span class="tag research">legal/fiscal</span>
+                <span class="tag">anti-alucinacion</span>
+              </div>
+            </div>
+            <p>Framework para IA legal y fiscal con recuperacion trazable, evidencia citada y disciplina contra respuestas no verificadas.</p>
+            <div class="links">
+              <a href="https://doi.org/10.5281/zenodo.17770791" target="_blank" rel="noopener noreferrer">DOI</a>
+            </div>
+          </article>
+          <article class="project-row">
+            <div>
+              <h3>ThrombIA</h3>
+              <div class="tag-row">
+                <span class="tag research">salud</span>
+                <span class="tag">explicable</span>
+              </div>
+            </div>
+            <p>Sistema clinico de apoyo a decisiones para trombosis, orientado a recomendacion explicable y evidencia trazable.</p>
+            <div class="links">
+              <a href="https://doi.org/10.5281/zenodo.17634962" target="_blank" rel="noopener noreferrer">DOI</a>
+            </div>
+          </article>
+          <article class="project-row">
+            <div>
+              <h3>KORE</h3>
+              <div class="tag-row">
+                <span class="tag public">open source</span>
+                <span class="tag">middleware IA</span>
+              </div>
+            </div>
+            <p>Stack cognitivo para LLMs: memoria persistente, cache, routing por complejidad, integracion runtime-agnostica y observabilidad.</p>
+            <div class="links">
+              <a href="https://github.com/iafiscal1212/kore-stack" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://pypi.org/project/kore-stack/" target="_blank" rel="noopener noreferrer">PyPI</a>
+            </div>
+          </article>
+          <article class="project-row">
+            <div>
+              <h3>AIP / Selector Complexity</h3>
+              <div class="tag-row">
+                <span class="tag public">open source</span>
+                <span class="tag research">proof complexity</span>
+              </div>
+            </div>
+            <p>Herramientas para sistemas sparse ultra-grandes, pruebas algebraicas, enrutamiento cognitivo y clasificacion de dificultad.</p>
+            <div class="links">
+              <a href="https://github.com/iafiscal1212/aip-engine" target="_blank" rel="noopener noreferrer">aip-engine</a>
+              <a href="https://github.com/iafiscal1212/sc-router" target="_blank" rel="noopener noreferrer">sc-router</a>
+            </div>
+          </article>
+          <article class="project-row">
+            <div>
+              <h3>TORC</h3>
+              <div class="tag-row">
+                <span class="tag public">software</span>
+                <span class="tag research">SAT</span>
+              </div>
+            </div>
+            <p>Línea de investigación y software para razonamiento topológico, SAT, carteras y restricciones formales con certificación.</p>
+            <div class="links">
+              <a href="https://pypi.org/project/torc-sat/" target="_blank" rel="noopener noreferrer">torc-sat</a>
+              <a href="https://pypi.org/project/torc-portfolio/" target="_blank" rel="noopener noreferrer">torc-portfolio</a>
+            </div>
+          </article>
+          <article class="project-row">
+            <div>
+              <h3>EndoLens</h3>
+              <div class="tag-row">
+                <span class="tag research">sistemas autonomos</span>
+                <span class="tag">Hebbian</span>
+              </div>
+            </div>
+            <p>Investigación en ecosistemas artificiales, dinámicas endógenas, aprendizaje Hebbiano y organización interna no dirigida.</p>
+            <div class="links">
+              <a href="https://doi.org/10.5281/zenodo.18902588" target="_blank" rel="noopener noreferrer">DOI</a>
+            </div>
+          </article>
+          <article class="project-row">
+            <div>
+              <h3>ORIGINMAP</h3>
+              <div class="tag-row">
+                <span class="tag public">público</span>
+                <span class="tag research">Kaggle</span>
+              </div>
+            </div>
+            <p>Laboratorio computacional de análisis de meteoritos y modelos nulos: demostración de cómo la estructura aparente puede desaparecer.</p>
+            <div class="links">
+              <a href="https://github.com/carmenest/ORIGINMAP" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.kaggle.com/code/caresment/when-big-data-lies" target="_blank" rel="noopener noreferrer">Kaggle</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <h3>NEOSYNT</h3>
-  <p id="ne">
-    Sistema evolutivo con intencionalidad dinámica.  
-    NEOSYNT incorpora señales internas (I_S, I_N, I_C), meta-intención,
-    adaptación contextual y divergencia acumulativa bajo alta varianza.
-  </p>
+    <section id="opensource" aria-labelledby="opensource-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="section-kicker">Open Source</p>
+          <div>
+            <h2 id="opensource-title">Paquetes publicados en PyPI.</h2>
+            <p class="lead">
+              Paquetes instalables publicamente y enlazados a repositorios o paginas oficiales cuando estan disponibles.
+              Versiones revisadas el 30 de julio de 2026.
+            </p>
+          </div>
+        </div>
+        <div class="package-grid">
+          <article class="package">
+            <h3><a href="https://pypi.org/project/aip-engine/" target="_blank" rel="noopener noreferrer">aip-engine</a></h3>
+            <span class="version">v0.5.1</span>
+            <p>Algebraic Independence Processor para estructura matricial y computación sparse ultra-grande.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/sc-router/" target="_blank" rel="noopener noreferrer">sc-router</a></h3>
+            <span class="version">v0.4.1</span>
+            <p>Routing de consultas IA basado en Selector Complexity y niveles de dificultad SC.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/aip-proxy/" target="_blank" rel="noopener noreferrer">aip-proxy</a></h3>
+            <span class="version">v0.1.1</span>
+            <p>Proxy de compresión de tokens para reducir coste y ruido operativo en APIs LLM.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/llm-ekg/" target="_blank" rel="noopener noreferrer">llm-ekg</a></h3>
+            <span class="version">v1.1.1</span>
+            <p>Monitor matemático de salud para LLMs: degradación, drift y señales de alucinación.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/kore-engine/" target="_blank" rel="noopener noreferrer">kore-engine</a></h3>
+            <span class="version">v0.2.1</span>
+            <p>Motor de conocimiento inteligente con cache, comprension y decision en un paquete.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/kore-mind/" target="_blank" rel="noopener noreferrer">kore-mind</a></h3>
+            <span class="version">v0.5.1</span>
+            <p>Memoria persistente e identidad emergente para sistemas LLM.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/kore-bridge/" target="_blank" rel="noopener noreferrer">kore-bridge</a></h3>
+            <span class="version">v0.3.3</span>
+            <p>Capa de integracion LLM para kore-mind, agnostica al runtime.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/kore-stack/" target="_blank" rel="noopener noreferrer">kore-stack</a></h3>
+            <span class="version">v0.1.3</span>
+            <p>Stack cognitivo completo: memoria, routing, cache y observabilidad.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/aegis-security/" target="_blank" rel="noopener noreferrer">aegis-security</a></h3>
+            <span class="version">v1.0.0</span>
+            <p>Guardian de entorno e integridad para seguridad de supply chain en desarrollo IA.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/aip-bench-suite/" target="_blank" rel="noopener noreferrer">aip-bench-suite</a></h3>
+            <span class="version">v0.1.1</span>
+            <p>Benchmarking para alucinación, eficiencia de inferencia y compresión QA.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/torc-portfolio/" target="_blank" rel="noopener noreferrer">torc-portfolio</a></h3>
+            <span class="version">v0.1.0</span>
+            <p>Verificador de factibilidad de carteras con LP, MIP, CVaR e IIS.</p>
+          </article>
+          <article class="package">
+            <h3><a href="https://pypi.org/project/torc-sat/" target="_blank" rel="noopener noreferrer">torc-sat</a></h3>
+            <span class="version">v0.1.1</span>
+            <p>Preprocesador SAT topologico con obstrucciones cohomologicas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <h3>ThrombIA</h3>
-  <p id="th">
-    Sistema clínico de apoyo a decisiones para trombosis basado en IA explicable.
-    Publicado en Zenodo y presentado como sistema multi-agente capaz de producir
-    recomendaciones trazables.
-  </p>
+    <section id="huggingface" aria-labelledby="hf-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="section-kicker">Hugging Face</p>
+          <div>
+            <h2 id="hf-title">Modelos y datasets públicos.</h2>
+            <p class="lead">
+              Artefactos publicados en Hugging Face bajo el usuario Carmenest y la organización diffuse-cpp.
+            </p>
+          </div>
+        </div>
+        <div class="model-list">
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/Carmenest/AIMO-AIP-32B" target="_blank" rel="noopener noreferrer">Carmenest/AIMO-AIP-32B</a></h3>
+              <span>Modelo público</span>
+            </div>
+            <p>Modelo AIMO/AIP de mayor tamaño publicado para experimentación y trazabilidad del trabajo.</p>
+            <span class="year">HF</span>
+          </article>
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/Carmenest/AIMO-AIP-7B-v2" target="_blank" rel="noopener noreferrer">Carmenest/AIMO-AIP-7B-v2</a></h3>
+              <span>Modelo público</span>
+            </div>
+            <p>Variante 7B para la línea AIMO/AIP.</p>
+            <span class="year">HF</span>
+          </article>
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/Carmenest/AIMO-AIP-VERITAS-v1" target="_blank" rel="noopener noreferrer">Carmenest/AIMO-AIP-VERITAS-v1</a></h3>
+              <span>Modelo público</span>
+            </div>
+            <p>Artefacto VERITAS v1 asociado a la línea AIMO/AIP.</p>
+            <span class="year">HF</span>
+          </article>
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/diffuse-cpp/LLaDA-8B-Instruct-GGUF" target="_blank" rel="noopener noreferrer">diffuse-cpp/LLaDA-8B-Instruct-GGUF</a></h3>
+              <span>GGUF, text generation</span>
+            </div>
+            <p>Cuantizaciones GGUF de LLaDA-8B-Instruct para inferencia CPU con diffuse-cpp.</p>
+            <span class="year">HF</span>
+          </article>
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/diffuse-cpp/Dream-v0-Instruct-7B-GGUF" target="_blank" rel="noopener noreferrer">diffuse-cpp/Dream-v0-Instruct-7B-GGUF</a></h3>
+              <span>GGUF, text generation</span>
+            </div>
+            <p>Cuantizaciones GGUF de Dream-v0-Instruct-7B para modelos de lenguaje por difusion.</p>
+            <span class="year">HF</span>
+          </article>
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/datasets/Carmenest/thrombia-hemostasis-enriched" target="_blank" rel="noopener noreferrer">thrombia-hemostasis-enriched</a></h3>
+              <span>Dataset público</span>
+            </div>
+            <p>Dataset enriquecido para investigación y evaluación en hemostasia.</p>
+            <span class="year">Dataset</span>
+          </article>
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/datasets/Carmenest/AIMO-AIP-Training-Data" target="_blank" rel="noopener noreferrer">AIMO-AIP-Training-Data</a></h3>
+              <span>Dataset público</span>
+            </div>
+            <p>Datos de entrenamiento para la línea AIMO/AIP.</p>
+            <span class="year">Dataset</span>
+          </article>
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/datasets/Carmenest/endo-brain-data-v2" target="_blank" rel="noopener noreferrer">endo-brain-data-v2</a></h3>
+              <span>Dataset público</span>
+            </div>
+            <p>Dataset asociado a investigación endógena y arquitectura EndoLens.</p>
+            <span class="year">Dataset</span>
+          </article>
+          <article class="list-row">
+            <div>
+              <h3><a href="https://huggingface.co/datasets/Carmenest/PHP-Entrelazado-Results" target="_blank" rel="noopener noreferrer">PHP-Entrelazado-Results</a></h3>
+              <span>Dataset público</span>
+            </div>
+            <p>Resultados públicos vinculados a PHP-Entrelazado y complejidad de pruebas algebraicas.</p>
+            <span class="year">Dataset</span>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <h3>PNEUMA CORE</h3>
-  <p id="pn">
-    Motor de razonamiento universal explicable basado en inferencia multicapas,
-    reglas simbólicas y resonancia conceptual.
-  </p>
+    <section id="investigacion" aria-labelledby="investigacion-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <p class="section-kicker">Investigacion</p>
+          <div>
+            <h2 id="investigacion-title">Publicaciones y registros citables.</h2>
+            <p class="lead">
+              ORCID y Zenodo funcionan como índice científico verificable. La lista prioriza los registros públicos
+              recientes y enlaza cada DOI cuando esta disponible.
+            </p>
+            <div class="tag-row">
+              <a class="tag research" href="https://orcid.org/0009-0009-8062-5492" target="_blank" rel="noopener noreferrer">ORCID 0009-0009-8062-5492</a>
+              <a class="tag research" href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Esteban%2C%20Carmen%22&l=list&sort=newest" target="_blank" rel="noopener noreferrer">Zenodo</a>
+            </div>
+          </div>
+        </div>
+        <div class="pub-list">
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.20817605" target="_blank" rel="noopener noreferrer">Priority Note: Endogenous Predictive Dynamics and Their Relation to Joint-Embedding World Models</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.20817605</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.20731219" target="_blank" rel="noopener noreferrer">IAFiscal para asesorías en España: RGPD, modelos AEAT y revisión humana</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.20731219</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.21203/rs.3.rs-9377955/v1" target="_blank" rel="noopener noreferrer">Universal scaling of superfluid stiffness in Sierpinski spiral superconductors</a></h3></div>
+            <p>Research Square DOI: 10.21203/rs.3.rs-9377955/v1</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.19473167" target="_blank" rel="noopener noreferrer">Universal scaling of superfluid stiffness in Sierpinski spiral superconductors</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.19473167</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.19358677" target="_blank" rel="noopener noreferrer">torc-portfolio: A Formally Verified Portfolio Constraint Feasibility Checker</a></h3></div>
+            <p>Software destacado. DOI: 10.5281/zenodo.19358677</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.19351341" target="_blank" rel="noopener noreferrer">A Conditional Argument for the TORC-Tseitin-EF Conjecture</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.19351341</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.19351277" target="_blank" rel="noopener noreferrer">The Central TORC Theorem: Measurable Inference Advantage from Indefinite Causal Order on Toroidal Systems</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.19351277</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.19349081" target="_blank" rel="noopener noreferrer">The exact second Betti number of the neighborhood complex of the Kneser graph KG(2k+2,k)</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.19349081</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.19323441" target="_blank" rel="noopener noreferrer">Behavioral Fingerprinting of LLM APIs: A Cross-Provider Audit Using Signal-Based Monitoring</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.19323441</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.19284461" target="_blank" rel="noopener noreferrer">LLM EKG: A Mathematical Health Monitor for Large Language Models</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.19284461</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.19162001" target="_blank" rel="noopener noreferrer">Diffusion Language Models are Faster than Autoregressive on CPU: An Empirical Study of the Memory-Compute Regime Inversion</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.19162001</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.18928839" target="_blank" rel="noopener noreferrer">The angular coincidence of the Sun and Moon is generic, not fine-tuned</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.18928839</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.18928263" target="_blank" rel="noopener noreferrer">Cuantificación de la singularidad mareal del sistema Tierra-Luna</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.18928263</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.18902588" target="_blank" rel="noopener noreferrer">Especiación Fenotípica en Ecosistemas Artificiales Autónomos</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.18902588</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.18880471" target="_blank" rel="noopener noreferrer">Wavelet Decomposition of Cryptocurrency Order Flow</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.18880471</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.18836579" target="_blank" rel="noopener noreferrer">Mispar Gadol como Codificación Discreta de Weber-Fechner</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.18836579</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.18728642" target="_blank" rel="noopener noreferrer">PHP-Entrelazado: Una Tautología Candidata Difícil para Sistemas de Prueba Algebraicos</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.18728642</p>
+            <span class="year">2026</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.17812163" target="_blank" rel="noopener noreferrer">On the Endogenous Structure of Temporal Dynamics in Self-Sustaining Systems</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.17812163</p>
+            <span class="year">2025</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.17791033" target="_blank" rel="noopener noreferrer">Dinámicas Endógenas y Autoorganización Multiespacial en Sistemas Cognitivos Autónomos</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.17791033</p>
+            <span class="year">2025</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.17770791" target="_blank" rel="noopener noreferrer">adnIA: A Zero-Hallucination Framework for Legal and Fiscal AI Systems</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.17770791</p>
+            <span class="year">2025</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.17769015" target="_blank" rel="noopener noreferrer">NEO-EVA v2: Endogenous Volition and Social Plasticity</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.17769015</p>
+            <span class="year">2025</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.17634962" target="_blank" rel="noopener noreferrer">Thrombia: Sistema Clínico de Apoyo a Decisiones para Trombosis</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.17634962</p>
+            <span class="year">2025</span>
+          </article>
+          <article class="list-row">
+            <div><h3><a href="https://doi.org/10.5281/zenodo.17634171" target="_blank" rel="noopener noreferrer">PNEUMA CORE v2.1</a></h3></div>
+            <p>Zenodo DOI: 10.5281/zenodo.17634171</p>
+            <span class="year">2025</span>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <h3>PHP-ENTRELAZADO</h3>
-  <p id="phpe">
-    Variante del Principio del Palomar (Pigeonhole Principle) enriquecida con variables
-    de orden y restricciones de transitividad. Candidato para demostrar cotas inferiores
-    superpolinomiales en el sistema IPS (Ideal Proof System), lo cual implicaría VNP &ne; VP.
-    <br><br>
-    <strong>Resultados:</strong> fooling set de (n+1)! elementos, complejidad de fórmula multilineal
-    2<sup>&Omega;(n)</sup> para el polinomio de orden total Q(y), grado mínimo del certificado IPS = 2n
-    (verificado computacionalmente para n=2,3,4 en GPU A100).
-    <br><br>
-    <a href="https://github.com/iafiscal1212/PHP-Entangled-Complexity" target="_blank">GitHub</a> &middot;
-    <a href="https://github.com/iafiscal1212/Selector-Complexity-Framework" target="_blank">Selector Complexity Framework</a>
-  </p>
+    <section id="contacto" aria-labelledby="contacto-title">
+      <div class="section-inner">
+        <div class="contact-grid">
+          <div>
+            <p class="section-kicker">Contacto</p>
+            <h2 id="contacto-title">Perfil público para colaboración y LinkedIn.</h2>
+            <p class="lead">
+              Interesada en proyectos donde la IA deba operar con evidencia, control humano, seguridad,
+              explicabilidad y valor práctico. El trabajo público se puede revisar en repositorios, paquetes,
+              modelos, datasets y DOI.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/carmenest-4b495b387" target="_blank" rel="noopener noreferrer">LinkedIn <span>carmenest</span></a>
+            <a href="https://github.com/iafiscal1212" target="_blank" rel="noopener noreferrer">GitHub <span>iafiscal1212</span></a>
+            <a href="https://github.com/carmenest" target="_blank" rel="noopener noreferrer">GitHub <span>carmenest</span></a>
+            <a href="https://orcid.org/0009-0009-8062-5492" target="_blank" rel="noopener noreferrer">ORCID <span>0009-0009-8062-5492</span></a>
+            <a href="https://huggingface.co/Carmenest" target="_blank" rel="noopener noreferrer">Hugging Face <span>Carmenest</span></a>
+            <a href="https://huggingface.co/diffuse-cpp" target="_blank" rel="noopener noreferrer">Hugging Face <span>diffuse-cpp</span></a>
+            <a href="https://pypi.org/user/iafiscal/" target="_blank" rel="noopener noreferrer">PyPI <span>paquetes públicos</span></a>
+            <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Esteban%2C%20Carmen%22&l=list&sort=newest" target="_blank" rel="noopener noreferrer">Zenodo <span>registros citables</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <h3>ORIGINMAP</h3>
-  <p id="om">
-    Laboratorio computacional de análisis de meteoritos. Demuestra cómo la estructura aparente
-    desaparece bajo modelos nulos adecuados.
-    <br>
-    <a href="https://www.kaggle.com/code/caresment/when-big-data-lies" target="_blank">Kaggle: When Big Data Lies</a> &middot;
-    <a href="https://github.com/carmenest/ORIGINMAP" target="_blank">GitHub</a>
-  </p>
+  <footer>
+    <div class="section-inner">
+      <span>Copyright 2026 Carmen Esteban.</span>
+      <span>Última revisión local: 30 julio 2026. Dominio previsto: carmen-esteban.com.</span>
+    </div>
+  </footer>
 
-  <h3>torc-portfolio</h3>
-  <p id="tpf">
-    Verificador de factibilidad de restricciones de cartera con verificacion formal.
-    Pipeline de 5 pasos (Quick checks, SAT, LP, MIP, CVaR) con extraccion del Subsistema
-    Infactible Irreducible (IIS). 1.143 tests incluyendo verificacion exhaustiva por fuerza bruta,
-    fuzzing basado en propiedades y certificacion formal de soluciones.
-    Alternativa open-source verificada a Gurobi/CPLEX.
-    <br><br>
-    <a href="https://pypi.org/project/torc-portfolio/" target="_blank">PyPI</a> &middot;
-    <a href="https://github.com/iafiscal1212/portfolio-optimizer" target="_blank">GitHub</a> &middot;
-    <a href="https://doi.org/10.5281/zenodo.19358677" target="_blank">DOI: 10.5281/zenodo.19358677</a>
-  </p>
-
-  <h3>torc-sat</h3>
-  <p id="tsat">
-    Preprocesador SAT topologico. Detecta UNSAT en formulas CNF mediante obstrucciones
-    cohomologicas basadas en la teoria TORC. Reconoce estructuras combinatorias ocultas
-    (PHP, Tseitin, coloracion de grafos) y emite certificados topologicos de infactibilidad.
-    Patente OEPM pendiente.
-    <br><br>
-    <a href="https://pypi.org/project/torc-sat/" target="_blank">PyPI</a> &middot;
-    <a href="https://github.com/iafiscal1212/torc-sat" target="_blank">GitHub</a>
-  </p>
-</div>
-
-<!-- ---------------- OPEN SOURCE / PYPI ---------------- -->
-<div class="card fade" id="opensource">
-  <h2>Open Source &middot; PyPI</h2>
-
-  <p id="pypi_intro">
-    Paquetes Python publicados en <a href="https://pypi.org" target="_blank">PyPI</a>,
-    instalables con <code style="background:#1b1b22;padding:0.2rem 0.5rem;border-radius:6px;">pip install nombre</code>.
-  </p>
-
-  <h3><a href="https://pypi.org/project/aip-engine/" target="_blank">aip-engine</a> <span class="small">v0.4.1</span></h3>
-  <p id="pypi_aip">
-    Algebraic Independence Processor. Auto-detección de estructura matricial y
-    computación eficiente en memoria para sistemas sparse ultra-grandes.
-    Motor Accordion para resolver sistemas IPS con cientos de millones de incógnitas.
-  </p>
-
-  <h3><a href="https://pypi.org/project/sc-router/" target="_blank">sc-router</a> <span class="small">v0.2.0</span></h3>
-  <p id="pypi_sc">
-    Enrutamiento de consultas IA basado en la teoría de Selector Complexity.
-    Clasifica queries por dificultad de enrutamiento (SC 0-3) para dirigirlas al modelo
-    óptimo.
-  </p>
-
-  <h3><a href="https://pypi.org/project/aip-proxy/" target="_blank">aip-proxy</a> <span class="small">v0.1.0</span></h3>
-  <p id="pypi_proxy">
-    Proxy de compresión de tokens para APIs LLM. Reduce costes 15-40% en cualquier
-    IDE de IA (Cursor, VS Code, etc.).
-  </p>
-
-  <h3><a href="https://pypi.org/project/kore-mind/" target="_blank">kore-mind</a> <span class="small">v0.5.0</span></h3>
-  <p id="pypi_korem">
-    Motor de memoria persistente e identidad emergente para cualquier LLM.
-  </p>
-
-  <h3><a href="https://pypi.org/project/kore-bridge/" target="_blank">kore-bridge</a> <span class="small">v0.3.2</span></h3>
-  <p id="pypi_koreb">
-    Capa de integración LLM para kore-mind. Puente cognitivo agnóstico al runtime.
-  </p>
-
-  <h3><a href="https://pypi.org/project/kore-stack/" target="_blank">kore-stack</a> <span class="small">v0.1.2</span></h3>
-  <p id="pypi_kores">
-    Stack cognitivo completo para LLMs. Memoria + enrutamiento SC + caché + observabilidad
-    en una sola instalación.
-  </p>
-
-  <h3><a href="https://pypi.org/project/torc-portfolio/" target="_blank">torc-portfolio</a> <span class="small">v0.1.0</span></h3>
-  <p id="pypi_tpf">
-    Verificador de factibilidad de carteras financieras. Pipeline SAT + LP + MIP + CVaR
-    con extraccion IIS y certificacion formal. 1.143 tests. Patente OEPM pendiente.
-  </p>
-
-  <h3><a href="https://pypi.org/project/torc-sat/" target="_blank">torc-sat</a> <span class="small">v0.1.1</span></h3>
-  <p id="pypi_tsat">
-    Preprocesador SAT topologico. Detecta UNSAT via obstrucciones cohomologicas (teoria TORC).
-    Soporta PHP, Tseitin, coloracion de grafos y restricciones financieras. Patente OEPM pendiente.
-  </p>
-</div>
-
-<!-- ---------------- PUBLICACIONES ---------------- -->
-<div class="card fade" id="publics">
-  <h2>Publicaciones y perfil científico</h2>
-
-  <p><strong>ORCID:</strong>  
-    <a href="https://orcid.org/0009-0009-8062-5492" target="_blank">
-      0009-0009-8062-5492
-    </a>
-  </p>
-
-  <p><strong>Zenodo:</strong>
-    <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22Esteban%2C%20Carmen%22&l=list&sort=newest" target="_blank">
-      Registros públicos en Zenodo
-    </a>
-  </p>
-
-  <p><strong>ORCID Works:</strong>
-    <a href="https://orcid.org/0009-0009-8062-5492#works" target="_blank">
-      Registros públicos en ORCID
-    </a>
-  </p>
-
-  <p id="pubtxt">
-    Trabajo como investigadora independiente en IA aplicada.
-    Uso Zenodo y ORCID como base de referencia científica verificable.
-  </p>
-
-  <h3>Publicaciones en Zenodo y ORCID</h3>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.20817605" target="_blank">Priority Note: Endogenous Predictive Dynamics and Their Relation to Joint-Embedding World Models</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.20817605</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.20731219" target="_blank">IAFiscal para asesorías en España: RGPD, modelos AEAT y revisión humana</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.20731219</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.21203/rs.3.rs-9377955/v1" target="_blank">Universal scaling of superfluid stiffness in Sierpinski spiral superconductors</a>
-    <br><span class="small">2026 &middot; Research Square / In Review &middot; en proceso de revisión por pares en Discover Condensed Matter &middot; DOI: 10.21203/rs.3.rs-9377955/v1</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19473167" target="_blank">Universal scaling of superfluid stiffness in Sierpinski spiral superconductors</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.19473167</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19358677" target="_blank">torc-portfolio: A Formally Verified Portfolio Constraint Feasibility Checker</a>
-    <br><span class="small">2026 &middot; Software destacado &middot; DOI: 10.5281/zenodo.19358677</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19351341" target="_blank">A Conditional Argument for the TORC-Tseitin-EF Conjecture</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.19351341</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19351277" target="_blank">The Central TORC Theorem: Measurable Inference Advantage from Indefinite Causal Order on Toroidal Systems</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.19351277</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19349081" target="_blank">The exact second Betti number of the neighborhood complex of the Kneser graph KG(2k+2,k)</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.19349081</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19323441" target="_blank">Behavioral Fingerprinting of LLM APIs: A Cross-Provider Audit Using Signal-Based Monitoring</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.19323441</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19284461" target="_blank">LLM EKG: A Mathematical Health Monitor for Large Language Models</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.19284461</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19162001" target="_blank">Diffusion Language Models are Faster than Autoregressive on CPU: An Empirical Study of the Memory-Compute Regime Inversion</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.19162001</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.19119814" target="_blank">Diffusion Language Models are Faster than Autoregressive on CPU: An Empirical Study of the Memory-Compute Regime Inversion</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.19119814</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.18928839" target="_blank">The angular coincidence of the Sun and Moon is generic, not fine-tuned: a quantitative closure of the Balbus (2014) hypothesis</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.18928839</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.18928263" target="_blank">Cuantificación de la singularidad mareal del sistema Tierra-Luna: entropía de Shannon, métricas de tamaño angular y conservación del momento angular en 33 sistemas de satélites</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.18928263</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.18902588" target="_blank">Especiación Fenotípica en Ecosistemas Artificiales Autónomos: Evidencia de Cuencas de Atracción Ortogonales en Representaciones Internas Aprendidas</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; EndoLens-AI &middot; DOI: 10.5281/zenodo.18902588</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.18880471" target="_blank">Wavelet Decomposition of Cryptocurrency Order Flow: A Multi-Asset Volatility Predictor That Leads the Options Market</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.18880471</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.18836579" target="_blank">Mispar Gadol como Codificación Discreta de Weber-Fechner: Evidencia Cuantitativa desde Experimentos Estructurales, Funcionales y Dinámicos</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.18836579</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.18728642" target="_blank">PHP-Entrelazado: Una Tautología Candidata Difícil para Sistemas de Prueba Algebraicos</a>
-    <br><span class="small">2026 &middot; Zenodo &middot; DOI: 10.5281/zenodo.18728642</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.17812163" target="_blank">On the Endogenous Structure of Temporal Dynamics in Self-Sustaining Systems</a>
-    <br><span class="small">2025 &middot; Zenodo &middot; DOI: 10.5281/zenodo.17812163</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.17791033" target="_blank">Dinámicas Endógenas y Autoorganización Multiespacial en Sistemas Cognitivos Autónomos: Estudio Observacional NEO-EVA (v1)</a>
-    <br><span class="small">2025 &middot; Zenodo &middot; DOI: 10.5281/zenodo.17791033</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.17770791" target="_blank">adnIA: A Zero-Hallucination Framework for Legal and Fiscal AI Systems in Spanish and European Jurisdictions</a>
-    <br><span class="small">2025 &middot; Zenodo &middot; DOI: 10.5281/zenodo.17770791</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.17769015" target="_blank">NEO↔EVA v2 — Endogenous Volition and Social Plasticity in Dual Autonomous Systems (Phenomenological Report)</a>
-    <br><span class="small">2025 &middot; Zenodo &middot; DOI: 10.5281/zenodo.17769015</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.17634962" target="_blank">Thrombia: Sistema Clínico de Apoyo a Decisiones para el Manejo de la Trombosis basado en IA Explicable</a>
-    <br><span class="small">2025 &middot; Zenodo &middot; DOI: 10.5281/zenodo.17634962</span>
-  </p>
-  <p>
-    <a href="https://doi.org/10.5281/zenodo.17634171" target="_blank">PNEUMA CORE v2.1: Extensión con pipeline visual y notas de arquitectura PB–PI–PE</a>
-    <br><span class="small">2025 &middot; Zenodo &middot; DOI: 10.5281/zenodo.17634171</span>
-  </p>
-</div>
-
-<!-- ---------------- CONTACTO ---------------- -->
-<div class="card fade" id="contact">
-  <h2>Contacto profesional</h2>
-
-  <p id="txtcontact">
-    Me interesa colaborar en investigación aplicada con impacto real.
-    Mis líneas principales encajan con arquitecturas ligeras, cognición artificial,
-    creatividad computacional y nuevos enfoques de intencionalidad en IA.
-  </p>
-
-  <p><strong>LinkedIn:</strong>  
-    <a href="https://www.linkedin.com/in/carmenest-4b495b387" target="_blank">Perfil profesional</a>
-  </p>
-
-  <p><strong>GitHub:</strong>  
-    <a href="https://github.com/carmenest" target="_blank">github.com/carmenest</a>
-  </p>
-
-  <p id="openaimsg"><strong>Por qué podría interesarme OpenAI</strong><br>
-    Diseño arquitectura conceptual y experimental desde cero.  
-    Busco siempre estructuras nuevas, no soluciones repetidas.  
-    Mi enfoque mezcla intención, dinámica, interpretabilidad y exploración.  
-    Me gusta construir sistemas que piensan diferente.
-  </p>
-</div>
-
-</div>
-
-<!-- ---------------- SCRIPT DE IDIOMA ---------------- -->
-<script>
-let lang = "ES";
-
-function toggleLang() {
-  lang = lang === "ES" ? "EN" : "ES";
-
-  const ES = {
-    intro: "Trabajo en arquitecturas cognitivas ligeras basadas en intencionalidad dinámica, meta-intención y adaptación contextual. Diseño motores de razonamiento que operan con precisión en dominios complejos como fiscalidad, derecho, medicina y creatividad computacional.",
-    inv: "Exploro modelos de cognición artificial que integran señales de intención, autoconservación del sistema, adaptación a entornos de alta varianza y creatividad computacional. Mi enfoque se centra en mecanismos no lineales donde la agencia emerge de forma estructurada.",
-    l1: "Modelos evolutivos con intencionalidad dinámica",
-    l2: "Meta-intención y sistemas auto-regulados",
-    l3: "Cognición ligera para entornos reales",
-    l4: "Creatividad computacional y patrones simbólicos",
-    l5: "Complejidad de pruebas algebraicas y cotas inferiores para IPS",
-    l6: "Optimizacion combinatoria de carteras y SAT topologico (TORC)",
-    ne: "Sistema evolutivo con intencionalidad dinámica. NEOSYNT incorpora señales internas (I_S, I_N, I_C), meta-intención, adaptación contextual y divergencia acumulativa bajo alta varianza.",
-    th: "Sistema clínico de apoyo a decisiones para trombosis basado en IA explicable. Publicado en Zenodo y presentado como sistema multi-agente capaz de producir recomendaciones trazables.",
-    pn: "Motor de razonamiento universal explicable basado en inferencia multicapas, reglas simbólicas y resonancia conceptual.",
-    phpe: 'Variante del Principio del Palomar enriquecida con variables de orden y restricciones de transitividad. Candidato para demostrar cotas inferiores superpolinomiales en IPS (Ideal Proof System), lo cual implicaría VNP &ne; VP.<br><br><strong>Resultados:</strong> fooling set de (n+1)! elementos, complejidad 2<sup>&Omega;(n)</sup> para Q(y), grado mínimo IPS = 2n (verificado para n=2,3,4 en GPU A100).<br><br><a href="https://github.com/iafiscal1212/PHP-Entangled-Complexity" target="_blank">GitHub</a> &middot; <a href="https://github.com/iafiscal1212/Selector-Complexity-Framework" target="_blank">Selector Complexity Framework</a>',
-    om: 'Laboratorio computacional de análisis de meteoritos. Demuestra cómo la estructura aparente desaparece bajo modelos nulos adecuados.<br><a href="https://www.kaggle.com/code/caresment/when-big-data-lies" target="_blank">Kaggle: When Big Data Lies</a> &middot; <a href="https://github.com/carmenest/ORIGINMAP" target="_blank">GitHub</a>',
-    tpf: 'Verificador de factibilidad de restricciones de cartera con verificacion formal. Pipeline de 5 pasos (Quick checks, SAT, LP, MIP, CVaR) con extraccion del Subsistema Infactible Irreducible (IIS). 1.143 tests incluyendo verificacion exhaustiva por fuerza bruta, fuzzing basado en propiedades y certificacion formal de soluciones. Alternativa open-source verificada a Gurobi/CPLEX.<br><br><a href="https://pypi.org/project/torc-portfolio/" target="_blank">PyPI</a> &middot; <a href="https://github.com/iafiscal1212/portfolio-optimizer" target="_blank">GitHub</a> &middot; <a href="https://doi.org/10.5281/zenodo.19358677" target="_blank">DOI: 10.5281/zenodo.19358677</a>',
-    tsat: 'Preprocesador SAT topologico. Detecta UNSAT en formulas CNF mediante obstrucciones cohomologicas basadas en la teoria TORC. Reconoce estructuras combinatorias ocultas (PHP, Tseitin, coloracion de grafos) y emite certificados topologicos de infactibilidad. Patente OEPM pendiente.<br><br><a href="https://pypi.org/project/torc-sat/" target="_blank">PyPI</a> &middot; <a href="https://github.com/iafiscal1212/torc-sat" target="_blank">GitHub</a>',
-    pypi_intro: 'Paquetes Python publicados en <a href="https://pypi.org" target="_blank">PyPI</a>, instalables con <code style="background:#1b1b22;padding:0.2rem 0.5rem;border-radius:6px;">pip install nombre</code>.',
-    pubtxt: "Trabajo como investigadora independiente en IA aplicada. Uso Zenodo y ORCID como base de referencia científica verificable.",
-    txtcontact: "Me interesa colaborar en investigación aplicada con impacto real. Mis líneas principales encajan con arquitecturas ligeras, cognición artificial, creatividad computacional y nuevos enfoques de intencionalidad en IA.",
-    openai: "Diseño arquitectura conceptual y experimental desde cero. Busco siempre estructuras nuevas, no soluciones repetidas. Mi enfoque mezcla intención, dinámica, interpretabilidad y exploración. Me gusta construir sistemas que piensan diferente."
-  };
-
-  const EN = {
-    intro: "I work on lightweight cognitive architectures based on dynamic intentionality, meta-intention and contextual adaptation. I design reasoning engines that operate precisely in complex domains like taxation, law, medicine and computational creativity.",
-    inv: "I explore artificial cognition models integrating intention signals, system self-preservation, adaptation to high-variance environments and computational creativity. My focus is on nonlinear mechanisms where agency emerges in a structured way.",
-    l1: "Evolutionary models with dynamic intentionality",
-    l2: "Meta-intention and self-regulated systems",
-    l3: "Lightweight cognition for real environments",
-    l4: "Computational creativity and symbolic patterns",
-    l5: "Algebraic proof complexity and IPS lower bounds",
-    l6: "Combinatorial portfolio optimization and topological SAT (TORC)",
-    ne: "Evolutionary system with dynamic intentionality. NEOSYNT incorporates internal signals (I_S, I_N, I_C), meta-intention, contextual adaptation and cumulative divergence under high variance.",
-    th: "Clinical decision support system for thrombosis using explainable AI. Published on Zenodo as a multi-agent system producing traceable recommendations.",
-    pn: "Universal explainable reasoning engine based on multi-layer inference, symbolic rules and conceptual resonance.",
-    phpe: 'A variant of the Pigeonhole Principle enriched with ordering variables and transitivity constraints. Candidate for proving super-polynomial lower bounds in IPS (Ideal Proof System), which would imply VNP &ne; VP.<br><br><strong>Results:</strong> fooling set of (n+1)! elements, multilinear formula complexity 2<sup>&Omega;(n)</sup> for Q(y), minimum IPS certificate degree = 2n (verified for n=2,3,4 on A100 GPU).<br><br><a href="https://github.com/iafiscal1212/PHP-Entangled-Complexity" target="_blank">GitHub</a> &middot; <a href="https://github.com/iafiscal1212/Selector-Complexity-Framework" target="_blank">Selector Complexity Framework</a>',
-    om: 'Computational laboratory for meteorite analysis. Demonstrates how apparent structure vanishes under proper null models.<br><a href="https://www.kaggle.com/code/caresment/when-big-data-lies" target="_blank">Kaggle: When Big Data Lies</a> &middot; <a href="https://github.com/carmenest/ORIGINMAP" target="_blank">GitHub</a>',
-    tpf: 'Formally verified portfolio constraint feasibility checker. 5-step pipeline (Quick checks, SAT, LP, MIP, CVaR) with Irreducible Infeasible Subsystem (IIS) extraction. 1,143 tests including exhaustive brute-force verification, property-based fuzzing and formal solution certification. Open-source verified alternative to Gurobi/CPLEX.<br><br><a href="https://pypi.org/project/torc-portfolio/" target="_blank">PyPI</a> &middot; <a href="https://github.com/iafiscal1212/portfolio-optimizer" target="_blank">GitHub</a> &middot; <a href="https://doi.org/10.5281/zenodo.19358677" target="_blank">DOI: 10.5281/zenodo.19358677</a>',
-    tsat: 'Topological SAT preprocessor. Detects UNSAT in CNF formulas via cohomological obstructions based on TORC theory. Recognizes hidden combinatorial structures (PHP, Tseitin, graph coloring) and emits topological infeasibility certificates. OEPM patent pending.<br><br><a href="https://pypi.org/project/torc-sat/" target="_blank">PyPI</a> &middot; <a href="https://github.com/iafiscal1212/torc-sat" target="_blank">GitHub</a>',
-    pypi_intro: 'Python packages published on <a href="https://pypi.org" target="_blank">PyPI</a>, installable with <code style="background:#1b1b22;padding:0.2rem 0.5rem;border-radius:6px;">pip install name</code>.',
-    pubtxt: "I work as an independent AI researcher. I use Zenodo and ORCID as verifiable scientific references.",
-    txtcontact: "I am interested in applied research collaborations with real impact. My main research lines align with lightweight architectures, artificial cognition, computational creativity and novel approaches to intentionality in AI.",
-    openai: "I design conceptual and experimental architecture from scratch. I always look for new structures, not repeated solutions. My approach blends intention, dynamics, interpretability and exploration. I like building systems that think differently."
-  };
-
-  const dict = lang === "ES" ? ES : EN;
-
-  document.getElementById("intro").innerHTML = dict.intro;
-  document.getElementById("inv").innerHTML   = dict.inv;
-  document.getElementById("l1").innerHTML    = dict.l1;
-  document.getElementById("l2").innerHTML    = dict.l2;
-  document.getElementById("l3").innerHTML    = dict.l3;
-  document.getElementById("l4").innerHTML    = dict.l4;
-  document.getElementById("l5").innerHTML    = dict.l5;
-  document.getElementById("ne").innerHTML    = dict.ne;
-  document.getElementById("th").innerHTML    = dict.th;
-  document.getElementById("pn").innerHTML    = dict.pn;
-  document.getElementById("phpe").innerHTML  = dict.phpe;
-  document.getElementById("om").innerHTML    = dict.om;
-  document.getElementById("l6").innerHTML    = dict.l6;
-  if(document.getElementById("tpf")) document.getElementById("tpf").innerHTML = dict.tpf;
-  if(document.getElementById("tsat")) document.getElementById("tsat").innerHTML = dict.tsat;
-  document.getElementById("pypi_intro").innerHTML = dict.pypi_intro;
-  document.getElementById("pubtxt").innerHTML = dict.pubtxt;
-  document.getElementById("txtcontact").innerHTML = dict.txtcontact;
-  document.getElementById("openaimsg").innerHTML = "<strong>" +
-    (lang === "ES" ? "Por qué podría interesarme OpenAI" : "Why OpenAI might interest me") +
-    "</strong><br>" + dict.openai;
-}
-
-function scrollToId(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-}
-</script>
-
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Carmen Esteban",
+    "url": "https://carmen-esteban.com/",
+    "image": "https://carmen-esteban.com/carmen.jpg",
+    "jobTitle": "Arquitecta de IA e investigadora aplicada",
+    "sameAs": [
+      "https://www.linkedin.com/in/carmenest-4b495b387",
+      "https://github.com/iafiscal1212",
+      "https://github.com/carmenest",
+      "https://orcid.org/0009-0009-8062-5492",
+      "https://huggingface.co/Carmenest",
+      "https://huggingface.co/diffuse-cpp"
+    ],
+    "knowsAbout": [
+      "Fiscalidad",
+      "Inteligencia artificial aplicada",
+      "Sistemas multiagente",
+      "Software verificable",
+      "Proof complexity",
+      "Hugging Face",
+      "PyPI",
+      "Zenodo"
+    ]
+  }
+  </script>
 </body>
 </html>
